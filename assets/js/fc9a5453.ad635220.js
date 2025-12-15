@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkproject=globalThis.webpackChunkproject||[]).push([[2195],{1170:o=>{o.exports=JSON.parse('{"metadata":{"permalink":"/hackathon_book/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
