@@ -17,21 +17,30 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
+**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]
+**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
+**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]
+**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]
 **Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
+**Project Type**: [single/web/mobile - determines source structure]
+**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]
+**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+*   [ ] **Real-world readiness**: Ensure all learning objectives map to deployable skills.
+*   [ ] **Hands-on over theory**: Prioritize building, simulating, and deploying on hardware.
+*   [ ] **Sim-to-Real pipeline**: Explicitly teach the bridge from simulation to edge device to real robot.
+*   [ ] **Future-proof stack**: Prioritize industry-dominant tools (ROS 2, NVIDIA Isaac Sim, Nav2, VLA).
+*   [ ] **Progressive complexity**: Start simple and increase complexity gradually.
+*   [ ] **Tool and Version Explicitness**: All tools and versions must be explicitly stated and supported (as of 2025).
+*   [ ] **Graded Hands-on Assignments**: Ensure at least one graded assignment per module.
+*   [ ] **Capstone Project Autonomy**: Project must demonstrate end-to-end autonomy.
+*   [ ] **Hardware Recommendations**: Include exact model numbers, minimum specs, and cost tiers.
+*   [ ] **Safety and Ethical Deployment**: Address safety and ethical considerations.
 
 ## Project Structure
 

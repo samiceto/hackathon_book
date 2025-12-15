@@ -1,37 +1,30 @@
-<!-- Sync Impact Report:
-Version change: 1.1.0 -> 1.2.0
-List of modified principles:
-  - Removed old principles related to course structure
-  - Added "Real-world readiness" (Phase 1)
-  - Added "Hands-on over theory" (Phase 1)
-  - Added "Sim-to-Real awareness" (Phase 1)
-  - Added "Future-proof knowledge" (Phase 1)
-  - Added "Progressive complexity" (Phase 1)
-  - Added "Book-native integration" (Phase 2)
-  - Added "Zero-install access" (Phase 2)
-  - Added "Content-accurate answers" (Phase 2)
-  - Added "Lightweight, cost-efficient design" (Phase 2)
-Added sections:
-  - Core Purpose (Phase 1)
-  - Key Standards (Phase 1)
-  - Constraints (Phase 1)
-  - Phase 2 Purpose
-  - Core Principles (Phase 2)
-  - Technical Standards
-  - Frontend Integration Requirements
-  - Security Requirements
-  - Reproducibility requirement
-  - Constraints (Phase 2)
-Removed sections:
-  - Old course-focused principles and constraints
-Templates requiring updates:
-  - .specify/templates/plan-template.md: ⚠ pending
-  - .specify/templates/spec-template.md: ⚠ pending
-  - .specify/templates/tasks-template.md: ⚠ pending
-  - .specify/templates/commands/sp.constitution.md: ⚠ pending
-Follow-up TODOs: None
--->
-# Physical AI & Humanoid Robotics – Book Constitution (Phase 1 Only)
+---
+id: 0003
+title: Update constitution with book-focused content
+stage: constitution
+date: 2025-12-12
+surface: agent
+model: claude-sonnet-4-5-20250929
+feature: none
+branch: 002-physical-ai-course
+user: user
+command: /sp.constitution
+labels: [constitution,book,physical-ai,humanoid-robotics]
+links:
+  spec: null
+  ticket: null
+  adr: null
+  pr: null
+files:
+ - .specify/memory/constitution.md
+tests:
+ - none
+---
+
+## Prompt
+
+the constitution you currently have contains extra matarial that i dont
+  want, udate it with, """# Physical AI & Humanoid Robotics – Book Constitution (Phase 1 Only)
 
 ## Core Purpose
 This constitution defines the rules for writing the *Physical AI & Humanoid Robotics* book.
@@ -103,6 +96,16 @@ Diagrams, pseudocode, frameworks, and explanations must be complete within the b
 
 ---
 
+## Governance
+This constitution governs book writing only.
+Any amendments require:
+1. A clear change note
+2. Justification
+3. Updating templates if needed
+
+---
+
+
 # Phase 2 – Integrated RAG Chatbot Constitution (Clean Edition)
 
 ## Phase 2 Purpose
@@ -169,11 +172,6 @@ A complete working implementation must be reproducible from:
 Must run on fully free-tier or near-zero-cost hosting.
 (Any free-tier platform is acceptable.)
 
-### II. Technical Constraints
-Backend must be implemented with FastAPI and hosted on free-tier services only.
-
-### III. Security Constraints
-No user PII should be stored, and API keys must never be exposed client-side.
 
 ### IV. No Authentication
 The chatbot must be usable without login, account creation, or OAuth.
@@ -181,10 +179,27 @@ The chatbot must be usable without login, account creation, or OAuth.
 ---
 
 ## Governance
-This constitution governs book writing only.
-Any amendments require:
-1. A clear change note
-2. Justification
-3. Updating templates if needed
+Any modification to Phase 2 standards must include:
+1. A clear change description
+ """ update the version and create phr
 
-**Version**: 1.2.0 | **Ratified**: 2025-12-11 | **Last Amended**: 2025-12-12
+## Response snapshot
+
+I'll help you update the constitution file with the new content you provided. Let me first check the current constitution file to understand what needs to be replaced.
+
+[Response continued with the steps taken to update the constitution file]
+
+## Outcome
+
+- ✅ Impact: Updated constitution to focus on book writing rather than course structure, with clear phases for book content and RAG chatbot integration
+- 🧪 Tests: none
+- 📁 Files: .specify/memory/constitution.md updated from v1.1.0 to v1.2.0
+- 🔁 Next prompts: Could update related templates to align with new constitution
+- 🧠 Reflection: Constitution now properly focused on book writing rather than course structure
+
+## Evaluation notes (flywheel)
+
+- Failure modes observed: none
+- Graders run and results (PASS/FAIL): N/A
+- Prompt variant (if applicable): N/A
+- Next experiment (smallest change to try): Update templates to align with new constitution
