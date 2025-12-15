@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter-7-cognitive-models" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 7 - Basic Cognitive Models for Humanoids | Physical AI &amp; Humanoid Robotics</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://semiceto.github.io.hackathon_book/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://semiceto.github.io.hackathon_book/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://semiceto.github.io.hackathon_book/docs/chapter-7-cognitive-models"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 7 - Basic Cognitive Models for Humanoids | Physical AI &amp; Humanoid Robotics"><meta data-rh="true" name="description" content="Introduction to Cognitive Modeling in Robotics"><meta data-rh="true" property="og:description" content="Introduction to Cognitive Modeling in Robotics"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://semiceto.github.io.hackathon_book/docs/chapter-7-cognitive-models"><link data-rh="true" rel="alternate" href="https://semiceto.github.io.hackathon_book/docs/chapter-7-cognitive-models" hreflang="en"><link data-rh="true" rel="alternate" href="https://semiceto.github.io.hackathon_book/docs/chapter-7-cognitive-models" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 7 - Basic Cognitive Models for Humanoids","item":"https://semiceto.github.io.hackathon_book/docs/chapter-7-cognitive-models"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Physical AI &amp; Humanoid Robotics RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Physical AI &amp; Humanoid Robotics Atom Feed"><link rel="stylesheet" href="/assets/css/styles.eab06f90.css">
+<script src="/assets/js/runtime~main.3b834da1.js" defer="defer"></script>
+<script src="/assets/js/main.2df9905a.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Physical AI &amp; Humanoid Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="Physical AI &amp; Humanoid Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Humanoid Robotics</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/chapter-1-introduction">Book</a><a class="navbar__item navbar__link" href="/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/semiceto/hackathon_book" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/chapter-1-introduction"><span title="Part I: Foundations" class="categoryLinkLabel_W154">Part I: Foundations</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-1-introduction"><span title="Chapter 1 - Introduction to Physical AI and Humanoid Robotics" class="linkLabel_WmDU">Chapter 1 - Introduction to Physical AI and Humanoid Robotics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-2-robot-middleware"><span title="Chapter 2 - Core Concepts in Robot Middleware" class="linkLabel_WmDU">Chapter 2 - Core Concepts in Robot Middleware</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-3-human-centered-design"><span title="Chapter 3 - Human-Centered Design Principles" class="linkLabel_WmDU">Chapter 3 - Human-Centered Design Principles</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/chapter-4-digital-twins"><span title="Part II: Simulation Awareness" class="categoryLinkLabel_W154">Part II: Simulation Awareness</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-4-digital-twins"><span title="Chapter 4 - Digital Twins and Physics Simulation Concepts" class="linkLabel_WmDU">Chapter 4 - Digital Twins and Physics Simulation Concepts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-5-simulation-technologies"><span title="Chapter 5 - Conceptual Overview of Simulation Technologies" class="linkLabel_WmDU">Chapter 5 - Conceptual Overview of Simulation Technologies</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/chapter-6-sensor-integration"><span title="Part III: Perception &amp; Cognitive Models" class="categoryLinkLabel_W154">Part III: Perception &amp; Cognitive Models</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-6-sensor-integration"><span title="Chapter 6 - Sensor Integration Concepts" class="linkLabel_WmDU">Chapter 6 - Sensor Integration Concepts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/chapter-7-cognitive-models"><span title="Chapter 7 - Basic Cognitive Models for Humanoids" class="linkLabel_WmDU">Chapter 7 - Basic Cognitive Models for Humanoids</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-8-human-robot-interaction"><span title="Chapter 8 - Human-Robot Interaction Principles" class="linkLabel_WmDU">Chapter 8 - Human-Robot Interaction Principles</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/chapter-9-movement-control"><span title="Part IV: Locomotion &amp; Control Concepts" class="categoryLinkLabel_W154">Part IV: Locomotion &amp; Control Concepts</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-9-movement-control"><span title="Chapter 9 - Introduction to Movement Control" class="linkLabel_WmDU">Chapter 9 - Introduction to Movement Control</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-10-balance-stability"><span title="Chapter 10 - Balance and Stability Concepts" class="linkLabel_WmDU">Chapter 10 - Balance and Stability Concepts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-11-path-planning"><span title="Chapter 11 - Path Planning and Navigation Basics" class="linkLabel_WmDU">Chapter 11 - Path Planning and Navigation Basics</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/chapter-12-integrating-physical-ai"><span title="Part V: Conceptual Capstone" class="categoryLinkLabel_W154">Part V: Conceptual Capstone</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-12-integrating-physical-ai"><span title="Chapter 12 - Integrating Physical AI Components" class="linkLabel_WmDU">Chapter 12 - Integrating Physical AI Components</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-13-ethics-future"><span title="Chapter 13 - Ethical Considerations and Future Outlook" class="linkLabel_WmDU">Chapter 13 - Ethical Considerations and Future Outlook</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Part III: Perception &amp; Cognitive Models</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 7 - Basic Cognitive Models for Humanoids</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Chapter 7: Basic Cognitive Models for Humanoids</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="introduction-to-cognitive-modeling-in-robotics">Introduction to Cognitive Modeling in Robotics<a href="#introduction-to-cognitive-modeling-in-robotics" class="hash-link" aria-label="Direct link to Introduction to Cognitive Modeling in Robotics" title="Direct link to Introduction to Cognitive Modeling in Robotics" translate="no">​</a></h2>
+<p>Cognitive models in humanoid robotics refer to computational frameworks that enable robots to process information, make decisions, and exhibit behaviors that appear intelligent and goal-directed. Unlike simple reactive systems, cognitive models allow humanoid robots to plan, reason, learn, and adapt to new situations in ways that are more similar to biological cognitive systems.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="architectural-approaches-to-cognitive-modeling">Architectural Approaches to Cognitive Modeling<a href="#architectural-approaches-to-cognitive-modeling" class="hash-link" aria-label="Direct link to Architectural Approaches to Cognitive Modeling" title="Direct link to Architectural Approaches to Cognitive Modeling" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="subsumption-architecture">Subsumption Architecture<a href="#subsumption-architecture" class="hash-link" aria-label="Direct link to Subsumption Architecture" title="Direct link to Subsumption Architecture" translate="no">​</a></h3>
+<p>A layered approach where higher-level behaviors can &quot;subsume&quot; or override lower-level ones:</p>
+<ul>
+<li class=""><strong>Structure</strong>: Multiple behavior layers with priority-based activation</li>
+<li class=""><strong>Advantages</strong>: Robust, biologically inspired, handles conflicting goals</li>
+<li class=""><strong>Disadvantages</strong>: Difficult to implement complex reasoning, limited learning</li>
+<li class=""><strong>Applications</strong>: Basic navigation, obstacle avoidance, simple interaction</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="three-layer-architecture">Three-Layer Architecture<a href="#three-layer-architecture" class="hash-link" aria-label="Direct link to Three-Layer Architecture" title="Direct link to Three-Layer Architecture" translate="no">​</a></h3>
+<p>A hierarchical structure separating different cognitive functions:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="reactive-layer">Reactive Layer<a href="#reactive-layer" class="hash-link" aria-label="Direct link to Reactive Layer" title="Direct link to Reactive Layer" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Immediate responses to environmental stimuli</li>
+<li class=""><strong>Characteristics</strong>: Fast, parallel processing, hardwired responses</li>
+<li class=""><strong>Examples</strong>: Reflexive movements, collision avoidance, basic motor control</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="executive-layer">Executive Layer<a href="#executive-layer" class="hash-link" aria-label="Direct link to Executive Layer" title="Direct link to Executive Layer" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Sequencing actions and managing goals</li>
+<li class=""><strong>Characteristics</strong>: Deliberative planning, goal management</li>
+<li class=""><strong>Examples</strong>: Task execution, behavior sequencing, resource allocation</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="deliberative-layer">Deliberative Layer<a href="#deliberative-layer" class="hash-link" aria-label="Direct link to Deliberative Layer" title="Direct link to Deliberative Layer" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Long-term planning and reasoning</li>
+<li class=""><strong>Characteristics</strong>: Complex problem solving, abstract reasoning</li>
+<li class=""><strong>Examples</strong>: Path planning, task decomposition, strategic decision making</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="behavior-based-robotics">Behavior-Based Robotics<a href="#behavior-based-robotics" class="hash-link" aria-label="Direct link to Behavior-Based Robotics" title="Direct link to Behavior-Based Robotics" translate="no">​</a></h3>
+<p>Focuses on individual behaviors that can be combined:</p>
+<ul>
+<li class=""><strong>Concept</strong>: Simple behaviors combined into complex behaviors</li>
+<li class=""><strong>Advantages</strong>: Modular, robust, biologically plausible</li>
+<li class=""><strong>Disadvantages</strong>: Coordination complexity, limited reasoning</li>
+<li class=""><strong>Applications</strong>: Mobile robot navigation, basic interaction</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="memory-systems-in-cognitive-models">Memory Systems in Cognitive Models<a href="#memory-systems-in-cognitive-models" class="hash-link" aria-label="Direct link to Memory Systems in Cognitive Models" title="Direct link to Memory Systems in Cognitive Models" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="working-memory">Working Memory<a href="#working-memory" class="hash-link" aria-label="Direct link to Working Memory" title="Direct link to Working Memory" translate="no">​</a></h3>
+<p>Short-term memory for active cognitive processes:</p>
+<ul>
+<li class=""><strong>Function</strong>: Holds information currently being processed</li>
+<li class=""><strong>Characteristics</strong>: Limited capacity, rapid access, temporary storage</li>
+<li class=""><strong>Implementation</strong>: Priority queues, attention mechanisms</li>
+<li class=""><strong>Applications</strong>: Active goal management, sensor data processing</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="long-term-memory">Long-Term Memory<a href="#long-term-memory" class="hash-link" aria-label="Direct link to Long-Term Memory" title="Direct link to Long-Term Memory" translate="no">​</a></h3>
+<p>Persistent storage for learned information:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="episodic-memory">Episodic Memory<a href="#episodic-memory" class="hash-link" aria-label="Direct link to Episodic Memory" title="Direct link to Episodic Memory" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Stores specific experiences and events</li>
+<li class=""><strong>Characteristics</strong>: Time-stamped, context-rich, associative</li>
+<li class=""><strong>Applications</strong>: Learning from experience, context recall</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="semantic-memory">Semantic Memory<a href="#semantic-memory" class="hash-link" aria-label="Direct link to Semantic Memory" title="Direct link to Semantic Memory" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Stores general knowledge and concepts</li>
+<li class=""><strong>Characteristics</strong>: Structured, hierarchical, reusable</li>
+<li class=""><strong>Applications</strong>: Object recognition, concept understanding</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="procedural-memory">Procedural Memory<a href="#procedural-memory" class="hash-link" aria-label="Direct link to Procedural Memory" title="Direct link to Procedural Memory" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Stores learned skills and procedures</li>
+<li class=""><strong>Characteristics</strong>: Automatic execution, context-independent</li>
+<li class=""><strong>Applications</strong>: Motor skills, routine behaviors</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="planning-and-decision-making">Planning and Decision Making<a href="#planning-and-decision-making" class="hash-link" aria-label="Direct link to Planning and Decision Making" title="Direct link to Planning and Decision Making" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="hierarchical-task-networks-htn">Hierarchical Task Networks (HTN)<a href="#hierarchical-task-networks-htn" class="hash-link" aria-label="Direct link to Hierarchical Task Networks (HTN)" title="Direct link to Hierarchical Task Networks (HTN)" translate="no">​</a></h3>
+<p>Decompose complex tasks into simpler subtasks:</p>
+<ul>
+<li class=""><strong>Concept</strong>: High-level tasks broken into executable actions</li>
+<li class=""><strong>Advantages</strong>: Efficient planning, reusable task structures</li>
+<li class=""><strong>Disadvantages</strong>: Requires complete task knowledge upfront</li>
+<li class=""><strong>Applications</strong>: Task execution, mission planning</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="partially-observable-markov-decision-processes-pomdps">Partially Observable Markov Decision Processes (POMDPs)<a href="#partially-observable-markov-decision-processes-pomdps" class="hash-link" aria-label="Direct link to Partially Observable Markov Decision Processes (POMDPs)" title="Direct link to Partially Observable Markov Decision Processes (POMDPs)" translate="no">​</a></h3>
+<p>Handle uncertainty in environment state:</p>
+<ul>
+<li class=""><strong>Concept</strong>: Decision making under uncertainty</li>
+<li class=""><strong>Advantages</strong>: Optimal decisions under uncertainty</li>
+<li class=""><strong>Disadvantages</strong>: Computational complexity, modeling difficulty</li>
+<li class=""><strong>Applications</strong>: Navigation in uncertain environments, decision making</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="behavior-trees">Behavior Trees<a href="#behavior-trees" class="hash-link" aria-label="Direct link to Behavior Trees" title="Direct link to Behavior Trees" translate="no">​</a></h3>
+<p>Hierarchical structure for organizing behaviors:</p>
+<ul>
+<li class=""><strong>Structure</strong>: Tree of nodes representing behaviors and conditions</li>
+<li class=""><strong>Advantages</strong>: Modular, reusable, easy to modify</li>
+<li class=""><strong>Disadvantages</strong>: Can become complex, limited learning</li>
+<li class=""><strong>Applications</strong>: Game AI, robot behavior control</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="learning-in-cognitive-models">Learning in Cognitive Models<a href="#learning-in-cognitive-models" class="hash-link" aria-label="Direct link to Learning in Cognitive Models" title="Direct link to Learning in Cognitive Models" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="reinforcement-learning">Reinforcement Learning<a href="#reinforcement-learning" class="hash-link" aria-label="Direct link to Reinforcement Learning" title="Direct link to Reinforcement Learning" translate="no">​</a></h3>
+<p>Learning through trial and error with reward signals:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="value-based-methods">Value-Based Methods<a href="#value-based-methods" class="hash-link" aria-label="Direct link to Value-Based Methods" title="Direct link to Value-Based Methods" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Concept</strong>: Learn value of state-action pairs</li>
+<li class=""><strong>Examples</strong>: Q-learning, Deep Q-Networks</li>
+<li class=""><strong>Applications</strong>: Motor skill learning, navigation optimization</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="policy-based-methods">Policy-Based Methods<a href="#policy-based-methods" class="hash-link" aria-label="Direct link to Policy-Based Methods" title="Direct link to Policy-Based Methods" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Concept</strong>: Directly learn policy mapping states to actions</li>
+<li class=""><strong>Examples</strong>: Policy gradient methods, Actor-Critic</li>
+<li class=""><strong>Applications</strong>: Continuous control, complex manipulation</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="imitation-learning">Imitation Learning<a href="#imitation-learning" class="hash-link" aria-label="Direct link to Imitation Learning" title="Direct link to Imitation Learning" translate="no">​</a></h3>
+<p>Learning by observing and mimicking demonstrations:</p>
+<ul>
+<li class=""><strong>Concept</strong>: Learn from expert demonstrations</li>
+<li class=""><strong>Advantages</strong>: Fast learning, human-like behavior</li>
+<li class=""><strong>Disadvantages</strong>: Requires demonstrations, limited generalization</li>
+<li class=""><strong>Applications</strong>: Motor skill acquisition, social behavior</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="transfer-learning">Transfer Learning<a href="#transfer-learning" class="hash-link" aria-label="Direct link to Transfer Learning" title="Direct link to Transfer Learning" translate="no">​</a></h3>
+<p>Applying knowledge from one domain to another:</p>
+<ul>
+<li class=""><strong>Concept</strong>: Adapt learned knowledge to new situations</li>
+<li class=""><strong>Advantages</strong>: Faster learning in new domains</li>
+<li class=""><strong>Disadvantages</strong>: Domain similarity requirements</li>
+<li class=""><strong>Applications</strong>: Cross-task learning, environment adaptation</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="conceptual-exercise-71-cognitive-architecture-design">Conceptual Exercise 7.1: Cognitive Architecture Design<a href="#conceptual-exercise-71-cognitive-architecture-design" class="hash-link" aria-label="Direct link to Conceptual Exercise 7.1: Cognitive Architecture Design" title="Direct link to Conceptual Exercise 7.1: Cognitive Architecture Design" translate="no">​</a></h2>
+<p>Design a cognitive architecture for a humanoid robot that serves as a museum guide. Consider:</p>
+<ol>
+<li class="">What cognitive layers would you implement and what would each do?</li>
+<li class="">How would the robot handle multiple simultaneous goals (answering questions, avoiding obstacles, following a tour route)?</li>
+<li class="">What memory systems would be most important for this application?</li>
+<li class="">How would the robot learn and adapt to different visitor types and preferences?</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="attention-mechanisms">Attention Mechanisms<a href="#attention-mechanisms" class="hash-link" aria-label="Direct link to Attention Mechanisms" title="Direct link to Attention Mechanisms" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="sensory-attention">Sensory Attention<a href="#sensory-attention" class="hash-link" aria-label="Direct link to Sensory Attention" title="Direct link to Sensory Attention" translate="no">​</a></h3>
+<p>Focusing processing resources on relevant sensory information:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="bottom-up-attention">Bottom-Up Attention<a href="#bottom-up-attention" class="hash-link" aria-label="Direct link to Bottom-Up Attention" title="Direct link to Bottom-Up Attention" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Stimulus-Driven</strong>: Attention drawn by salient stimuli</li>
+<li class=""><strong>Characteristics</strong>: Fast, automatic, stimulus-dependent</li>
+<li class=""><strong>Applications</strong>: Detecting unexpected events, salient object detection</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="top-down-attention">Top-Down Attention<a href="#top-down-attention" class="hash-link" aria-label="Direct link to Top-Down Attention" title="Direct link to Top-Down Attention" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Goal-Driven</strong>: Attention guided by current goals</li>
+<li class=""><strong>Characteristics</strong>: Flexible, task-dependent, resource allocation</li>
+<li class=""><strong>Applications</strong>: Goal-oriented search, task execution</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="executive-attention">Executive Attention<a href="#executive-attention" class="hash-link" aria-label="Direct link to Executive Attention" title="Direct link to Executive Attention" translate="no">​</a></h3>
+<p>Managing cognitive resources and task switching:</p>
+<ul>
+<li class=""><strong>Function</strong>: Control cognitive processes and resource allocation</li>
+<li class=""><strong>Characteristics</strong>: Limited capacity, priority-based</li>
+<li class=""><strong>Applications</strong>: Task scheduling, conflict resolution</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="social-cognition">Social Cognition<a href="#social-cognition" class="hash-link" aria-label="Direct link to Social Cognition" title="Direct link to Social Cognition" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="theory-of-mind">Theory of Mind<a href="#theory-of-mind" class="hash-link" aria-label="Direct link to Theory of Mind" title="Direct link to Theory of Mind" translate="no">​</a></h3>
+<p>Understanding others&#x27; mental states and beliefs:</p>
+<ul>
+<li class=""><strong>Concept</strong>: Attributing mental states to others</li>
+<li class=""><strong>Applications</strong>: Human-robot interaction, collaboration</li>
+<li class=""><strong>Challenges</strong>: Computational complexity, modeling uncertainty</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="joint-attention">Joint Attention<a href="#joint-attention" class="hash-link" aria-label="Direct link to Joint Attention" title="Direct link to Joint Attention" translate="no">​</a></h3>
+<p>Coordinated attention between robot and human:</p>
+<ul>
+<li class=""><strong>Function</strong>: Shared focus on objects or events</li>
+<li class=""><strong>Applications</strong>: Collaborative tasks, instruction following</li>
+<li class=""><strong>Implementation</strong>: Gaze coordination, pointing, shared attention cues</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="emotion-and-motivation-models">Emotion and Motivation Models<a href="#emotion-and-motivation-models" class="hash-link" aria-label="Direct link to Emotion and Motivation Models" title="Direct link to Emotion and Motivation Models" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="affective-computing">Affective Computing<a href="#affective-computing" class="hash-link" aria-label="Direct link to Affective Computing" title="Direct link to Affective Computing" translate="no">​</a></h3>
+<p>Modeling emotional states and responses:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="basic-emotion-models">Basic Emotion Models<a href="#basic-emotion-models" class="hash-link" aria-label="Direct link to Basic Emotion Models" title="Direct link to Basic Emotion Models" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Discrete emotion categories (happy, sad, angry, etc.)</li>
+<li class=""><strong>Applications</strong>: Social interaction, emotional expression</li>
+<li class=""><strong>Limitations</strong>: Oversimplified emotional complexity</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="dimensional-models">Dimensional Models<a href="#dimensional-models" class="hash-link" aria-label="Direct link to Dimensional Models" title="Direct link to Dimensional Models" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Emotions as points in dimensional space (valence, arousal)</li>
+<li class=""><strong>Applications</strong>: Emotional state tracking, adaptive behavior</li>
+<li class=""><strong>Advantages</strong>: Continuous emotional representation</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="motivation-systems">Motivation Systems<a href="#motivation-systems" class="hash-link" aria-label="Direct link to Motivation Systems" title="Direct link to Motivation Systems" translate="no">​</a></h3>
+<p>Driving behavior toward goals:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="drive-reduction-models">Drive Reduction Models<a href="#drive-reduction-models" class="hash-link" aria-label="Direct link to Drive Reduction Models" title="Direct link to Drive Reduction Models" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Concept</strong>: Behavior driven by reducing internal drives</li>
+<li class=""><strong>Applications</strong>: Goal-oriented behavior, energy management</li>
+<li class=""><strong>Limitations</strong>: Doesn&#x27;t explain curiosity-driven behavior</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="intrinsic-motivation">Intrinsic Motivation<a href="#intrinsic-motivation" class="hash-link" aria-label="Direct link to Intrinsic Motivation" title="Direct link to Intrinsic Motivation" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Concept</strong>: Behavior driven by internal rewards (curiosity, novelty)</li>
+<li class=""><strong>Applications</strong>: Exploration, learning, skill development</li>
+<li class=""><strong>Advantages</strong>: Explains self-directed behavior</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="integration-with-sensor-and-actuator-systems">Integration with Sensor and Actuator Systems<a href="#integration-with-sensor-and-actuator-systems" class="hash-link" aria-label="Direct link to Integration with Sensor and Actuator Systems" title="Direct link to Integration with Sensor and Actuator Systems" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="perception-action-coupling">Perception-Action Coupling<a href="#perception-action-coupling" class="hash-link" aria-label="Direct link to Perception-Action Coupling" title="Direct link to Perception-Action Coupling" translate="no">​</a></h3>
+<p>Direct connections between perception and action:</p>
+<ul>
+<li class=""><strong>Concept</strong>: Tightly coupled perception and action cycles</li>
+<li class=""><strong>Advantages</strong>: Fast response, robust behavior</li>
+<li class=""><strong>Applications</strong>: Reactive behaviors, reflexes</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cognitive-control-loop">Cognitive Control Loop<a href="#cognitive-control-loop" class="hash-link" aria-label="Direct link to Cognitive Control Loop" title="Direct link to Cognitive Control Loop" translate="no">​</a></h3>
+<p>Higher-level cognitive processing influencing perception and action:</p>
+<ul>
+<li class=""><strong>Structure</strong>: Perception → Cognition → Action with feedback</li>
+<li class=""><strong>Advantages</strong>: Flexible, goal-directed behavior</li>
+<li class=""><strong>Applications</strong>: Complex task execution, planning</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="multi-agent-cognition">Multi-Agent Cognition<a href="#multi-agent-cognition" class="hash-link" aria-label="Direct link to Multi-Agent Cognition" title="Direct link to Multi-Agent Cognition" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="distributed-cognition">Distributed Cognition<a href="#distributed-cognition" class="hash-link" aria-label="Direct link to Distributed Cognition" title="Direct link to Distributed Cognition" translate="no">​</a></h3>
+<p>Cognitive processes distributed across multiple agents:</p>
+<ul>
+<li class=""><strong>Concept</strong>: Cognition emerges from agent interactions</li>
+<li class=""><strong>Applications</strong>: Multi-robot systems, human-robot teams</li>
+<li class=""><strong>Benefits</strong>: Robustness, scalability</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="social-learning">Social Learning<a href="#social-learning" class="hash-link" aria-label="Direct link to Social Learning" title="Direct link to Social Learning" translate="no">​</a></h3>
+<p>Learning through interaction with other agents:</p>
+<ul>
+<li class=""><strong>Mechanisms</strong>: Imitation, teaching, collaborative learning</li>
+<li class=""><strong>Applications</strong>: Multi-robot learning, human-robot learning</li>
+<li class=""><strong>Benefits</strong>: Accelerated learning, social adaptation</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="evaluation-of-cognitive-models">Evaluation of Cognitive Models<a href="#evaluation-of-cognitive-models" class="hash-link" aria-label="Direct link to Evaluation of Cognitive Models" title="Direct link to Evaluation of Cognitive Models" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="functional-metrics">Functional Metrics<a href="#functional-metrics" class="hash-link" aria-label="Direct link to Functional Metrics" title="Direct link to Functional Metrics" translate="no">​</a></h3>
+<p>Evaluating cognitive model performance:</p>
+<ul>
+<li class=""><strong>Task Success Rate</strong>: Percentage of successful task completions</li>
+<li class=""><strong>Efficiency</strong>: Time and resources required for tasks</li>
+<li class=""><strong>Adaptability</strong>: Ability to handle novel situations</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cognitive-metrics">Cognitive Metrics<a href="#cognitive-metrics" class="hash-link" aria-label="Direct link to Cognitive Metrics" title="Direct link to Cognitive Metrics" translate="no">​</a></h3>
+<p>Evaluating cognitive processes:</p>
+<ul>
+<li class=""><strong>Planning Quality</strong>: Quality of generated plans</li>
+<li class=""><strong>Learning Speed</strong>: Rate of improvement over time</li>
+<li class=""><strong>Generalization</strong>: Performance on novel situations</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ethical-considerations">Ethical Considerations<a href="#ethical-considerations" class="hash-link" aria-label="Direct link to Ethical Considerations" title="Direct link to Ethical Considerations" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cognitive-transparency">Cognitive Transparency<a href="#cognitive-transparency" class="hash-link" aria-label="Direct link to Cognitive Transparency" title="Direct link to Cognitive Transparency" translate="no">​</a></h3>
+<p>Ensuring human understanding of robot cognitive processes:</p>
+<ul>
+<li class=""><strong>Importance</strong>: Trust, safety, accountability</li>
+<li class=""><strong>Approaches</strong>: Explainable AI, behavior visualization</li>
+<li class=""><strong>Challenges</strong>: Complexity vs. understandability trade-off</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cognitive-biases">Cognitive Biases<a href="#cognitive-biases" class="hash-link" aria-label="Direct link to Cognitive Biases" title="Direct link to Cognitive Biases" translate="no">​</a></h3>
+<p>Avoiding problematic biases in cognitive models:</p>
+<ul>
+<li class=""><strong>Sources</strong>: Training data, algorithmic design</li>
+<li class=""><strong>Impacts</strong>: Unfair treatment, discrimination</li>
+<li class=""><strong>Mitigation</strong>: Bias detection, diverse training data</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="summary">Summary<a href="#summary" class="hash-link" aria-label="Direct link to Summary" title="Direct link to Summary" translate="no">​</a></h2>
+<p>Cognitive models provide the computational foundation for intelligent behavior in humanoid robots. These models range from simple reactive systems to complex architectures that can plan, learn, and adapt. The choice of cognitive architecture depends on the specific application and required capabilities, with trade-offs between complexity, performance, and adaptability.</p>
+<hr>
+<p><strong>Previous</strong>: <a class="" href="/docs/chapter-6-sensor-integration">Chapter 6 - Sensor Integration Concepts</a>
+<strong>Next</strong>: <a class="" href="/docs/chapter-8-human-robot-interaction">Chapter 8 - Human-Robot Interaction Principles</a></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapter-7-cognitive-models.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/chapter-6-sensor-integration"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 6 - Sensor Integration Concepts</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/chapter-8-human-robot-interaction"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 8 - Human-Robot Interaction Principles</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction-to-cognitive-modeling-in-robotics" class="table-of-contents__link toc-highlight">Introduction to Cognitive Modeling in Robotics</a></li><li><a href="#architectural-approaches-to-cognitive-modeling" class="table-of-contents__link toc-highlight">Architectural Approaches to Cognitive Modeling</a><ul><li><a href="#subsumption-architecture" class="table-of-contents__link toc-highlight">Subsumption Architecture</a></li><li><a href="#three-layer-architecture" class="table-of-contents__link toc-highlight">Three-Layer Architecture</a></li><li><a href="#behavior-based-robotics" class="table-of-contents__link toc-highlight">Behavior-Based Robotics</a></li></ul></li><li><a href="#memory-systems-in-cognitive-models" class="table-of-contents__link toc-highlight">Memory Systems in Cognitive Models</a><ul><li><a href="#working-memory" class="table-of-contents__link toc-highlight">Working Memory</a></li><li><a href="#long-term-memory" class="table-of-contents__link toc-highlight">Long-Term Memory</a></li></ul></li><li><a href="#planning-and-decision-making" class="table-of-contents__link toc-highlight">Planning and Decision Making</a><ul><li><a href="#hierarchical-task-networks-htn" class="table-of-contents__link toc-highlight">Hierarchical Task Networks (HTN)</a></li><li><a href="#partially-observable-markov-decision-processes-pomdps" class="table-of-contents__link toc-highlight">Partially Observable Markov Decision Processes (POMDPs)</a></li><li><a href="#behavior-trees" class="table-of-contents__link toc-highlight">Behavior Trees</a></li></ul></li><li><a href="#learning-in-cognitive-models" class="table-of-contents__link toc-highlight">Learning in Cognitive Models</a><ul><li><a href="#reinforcement-learning" class="table-of-contents__link toc-highlight">Reinforcement Learning</a></li><li><a href="#imitation-learning" class="table-of-contents__link toc-highlight">Imitation Learning</a></li><li><a href="#transfer-learning" class="table-of-contents__link toc-highlight">Transfer Learning</a></li></ul></li><li><a href="#conceptual-exercise-71-cognitive-architecture-design" class="table-of-contents__link toc-highlight">Conceptual Exercise 7.1: Cognitive Architecture Design</a></li><li><a href="#attention-mechanisms" class="table-of-contents__link toc-highlight">Attention Mechanisms</a><ul><li><a href="#sensory-attention" class="table-of-contents__link toc-highlight">Sensory Attention</a></li><li><a href="#executive-attention" class="table-of-contents__link toc-highlight">Executive Attention</a></li></ul></li><li><a href="#social-cognition" class="table-of-contents__link toc-highlight">Social Cognition</a><ul><li><a href="#theory-of-mind" class="table-of-contents__link toc-highlight">Theory of Mind</a></li><li><a href="#joint-attention" class="table-of-contents__link toc-highlight">Joint Attention</a></li></ul></li><li><a href="#emotion-and-motivation-models" class="table-of-contents__link toc-highlight">Emotion and Motivation Models</a><ul><li><a href="#affective-computing" class="table-of-contents__link toc-highlight">Affective Computing</a></li><li><a href="#motivation-systems" class="table-of-contents__link toc-highlight">Motivation Systems</a></li></ul></li><li><a href="#integration-with-sensor-and-actuator-systems" class="table-of-contents__link toc-highlight">Integration with Sensor and Actuator Systems</a><ul><li><a href="#perception-action-coupling" class="table-of-contents__link toc-highlight">Perception-Action Coupling</a></li><li><a href="#cognitive-control-loop" class="table-of-contents__link toc-highlight">Cognitive Control Loop</a></li></ul></li><li><a href="#multi-agent-cognition" class="table-of-contents__link toc-highlight">Multi-Agent Cognition</a><ul><li><a href="#distributed-cognition" class="table-of-contents__link toc-highlight">Distributed Cognition</a></li><li><a href="#social-learning" class="table-of-contents__link toc-highlight">Social Learning</a></li></ul></li><li><a href="#evaluation-of-cognitive-models" class="table-of-contents__link toc-highlight">Evaluation of Cognitive Models</a><ul><li><a href="#functional-metrics" class="table-of-contents__link toc-highlight">Functional Metrics</a></li><li><a href="#cognitive-metrics" class="table-of-contents__link toc-highlight">Cognitive Metrics</a></li></ul></li><li><a href="#ethical-considerations" class="table-of-contents__link toc-highlight">Ethical Considerations</a><ul><li><a href="#cognitive-transparency" class="table-of-contents__link toc-highlight">Cognitive Transparency</a></li><li><a href="#cognitive-biases" class="table-of-contents__link toc-highlight">Cognitive Biases</a></li></ul></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Book</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Introduction</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://example.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">Physical AI Community<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://example.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">Humanoid Robotics Forum<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://docs.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS 2 Documentation<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/semiceto/hackathon_book" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Book. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

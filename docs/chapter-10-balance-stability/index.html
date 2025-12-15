@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter-10-balance-stability" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 10 - Balance and Stability Concepts | Physical AI &amp; Humanoid Robotics</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://semiceto.github.io.hackathon_book/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://semiceto.github.io.hackathon_book/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://semiceto.github.io.hackathon_book/docs/chapter-10-balance-stability"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 10 - Balance and Stability Concepts | Physical AI &amp; Humanoid Robotics"><meta data-rh="true" name="description" content="Introduction to Balance in Humanoid Systems"><meta data-rh="true" property="og:description" content="Introduction to Balance in Humanoid Systems"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://semiceto.github.io.hackathon_book/docs/chapter-10-balance-stability"><link data-rh="true" rel="alternate" href="https://semiceto.github.io.hackathon_book/docs/chapter-10-balance-stability" hreflang="en"><link data-rh="true" rel="alternate" href="https://semiceto.github.io.hackathon_book/docs/chapter-10-balance-stability" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 10 - Balance and Stability Concepts","item":"https://semiceto.github.io.hackathon_book/docs/chapter-10-balance-stability"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Physical AI &amp; Humanoid Robotics RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Physical AI &amp; Humanoid Robotics Atom Feed"><link rel="stylesheet" href="/assets/css/styles.eab06f90.css">
+<script src="/assets/js/runtime~main.3b834da1.js" defer="defer"></script>
+<script src="/assets/js/main.2df9905a.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Physical AI &amp; Humanoid Robotics Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="Physical AI &amp; Humanoid Robotics Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Humanoid Robotics</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/chapter-1-introduction">Book</a><a class="navbar__item navbar__link" href="/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/semiceto/hackathon_book" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/chapter-1-introduction"><span title="Part I: Foundations" class="categoryLinkLabel_W154">Part I: Foundations</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-1-introduction"><span title="Chapter 1 - Introduction to Physical AI and Humanoid Robotics" class="linkLabel_WmDU">Chapter 1 - Introduction to Physical AI and Humanoid Robotics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-2-robot-middleware"><span title="Chapter 2 - Core Concepts in Robot Middleware" class="linkLabel_WmDU">Chapter 2 - Core Concepts in Robot Middleware</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-3-human-centered-design"><span title="Chapter 3 - Human-Centered Design Principles" class="linkLabel_WmDU">Chapter 3 - Human-Centered Design Principles</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/chapter-4-digital-twins"><span title="Part II: Simulation Awareness" class="categoryLinkLabel_W154">Part II: Simulation Awareness</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-4-digital-twins"><span title="Chapter 4 - Digital Twins and Physics Simulation Concepts" class="linkLabel_WmDU">Chapter 4 - Digital Twins and Physics Simulation Concepts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-5-simulation-technologies"><span title="Chapter 5 - Conceptual Overview of Simulation Technologies" class="linkLabel_WmDU">Chapter 5 - Conceptual Overview of Simulation Technologies</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/chapter-6-sensor-integration"><span title="Part III: Perception &amp; Cognitive Models" class="categoryLinkLabel_W154">Part III: Perception &amp; Cognitive Models</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-6-sensor-integration"><span title="Chapter 6 - Sensor Integration Concepts" class="linkLabel_WmDU">Chapter 6 - Sensor Integration Concepts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-7-cognitive-models"><span title="Chapter 7 - Basic Cognitive Models for Humanoids" class="linkLabel_WmDU">Chapter 7 - Basic Cognitive Models for Humanoids</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-8-human-robot-interaction"><span title="Chapter 8 - Human-Robot Interaction Principles" class="linkLabel_WmDU">Chapter 8 - Human-Robot Interaction Principles</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/chapter-9-movement-control"><span title="Part IV: Locomotion &amp; Control Concepts" class="categoryLinkLabel_W154">Part IV: Locomotion &amp; Control Concepts</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-9-movement-control"><span title="Chapter 9 - Introduction to Movement Control" class="linkLabel_WmDU">Chapter 9 - Introduction to Movement Control</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/chapter-10-balance-stability"><span title="Chapter 10 - Balance and Stability Concepts" class="linkLabel_WmDU">Chapter 10 - Balance and Stability Concepts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-11-path-planning"><span title="Chapter 11 - Path Planning and Navigation Basics" class="linkLabel_WmDU">Chapter 11 - Path Planning and Navigation Basics</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/chapter-12-integrating-physical-ai"><span title="Part V: Conceptual Capstone" class="categoryLinkLabel_W154">Part V: Conceptual Capstone</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-12-integrating-physical-ai"><span title="Chapter 12 - Integrating Physical AI Components" class="linkLabel_WmDU">Chapter 12 - Integrating Physical AI Components</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter-13-ethics-future"><span title="Chapter 13 - Ethical Considerations and Future Outlook" class="linkLabel_WmDU">Chapter 13 - Ethical Considerations and Future Outlook</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Part IV: Locomotion &amp; Control Concepts</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 10 - Balance and Stability Concepts</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Chapter 10: Balance and Stability Concepts</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="introduction-to-balance-in-humanoid-systems">Introduction to Balance in Humanoid Systems<a href="#introduction-to-balance-in-humanoid-systems" class="hash-link" aria-label="Direct link to Introduction to Balance in Humanoid Systems" title="Direct link to Introduction to Balance in Humanoid Systems" translate="no">​</a></h2>
+<p>Balance in humanoid robotics is the fundamental capability that enables these robots to maintain their posture and execute movements without falling. Unlike wheeled robots that have continuous support, humanoid robots must manage their center of mass relative to their support base, making balance control one of the most critical and complex aspects of humanoid robot operation.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="physical-principles-of-balance">Physical Principles of Balance<a href="#physical-principles-of-balance" class="hash-link" aria-label="Direct link to Physical Principles of Balance" title="Direct link to Physical Principles of Balance" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="center-of-mass-com">Center of Mass (CoM)<a href="#center-of-mass-com" class="hash-link" aria-label="Direct link to Center of Mass (CoM)" title="Direct link to Center of Mass (CoM)" translate="no">​</a></h3>
+<p>The center of mass is the point where the robot&#x27;s mass can be considered concentrated:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="com-calculation">CoM Calculation<a href="#com-calculation" class="hash-link" aria-label="Direct link to CoM Calculation" title="Direct link to CoM Calculation" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Definition</strong>: Weighted average of all mass points in the system</li>
+<li class=""><strong>Formula</strong>: CoM = Σ(mᵢ × rᵢ) / Σmᵢ</li>
+<li class=""><strong>Importance</strong>: Critical for stability analysis and control</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="com-dynamics">CoM Dynamics<a href="#com-dynamics" class="hash-link" aria-label="Direct link to CoM Dynamics" title="Direct link to CoM Dynamics" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Relation to Stability</strong>: CoM must remain within support polygon for static stability</li>
+<li class=""><strong>Control</strong>: Active manipulation of CoM position through body configuration</li>
+<li class=""><strong>Measurement</strong>: Estimated using kinematic and inertial models</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="support-polygon">Support Polygon<a href="#support-polygon" class="hash-link" aria-label="Direct link to Support Polygon" title="Direct link to Support Polygon" translate="no">​</a></h3>
+<p>The area defined by the robot&#x27;s contact points with the ground:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="static-support-polygon">Static Support Polygon<a href="#static-support-polygon" class="hash-link" aria-label="Direct link to Static Support Polygon" title="Direct link to Static Support Polygon" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Definition</strong>: Convex hull of all contact points</li>
+<li class=""><strong>Stability Condition</strong>: CoM must remain within polygon for static stability</li>
+<li class=""><strong>Examples</strong>: Single foot (small), double stance (large)</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="dynamic-support-polygon">Dynamic Support Polygon<a href="#dynamic-support-polygon" class="hash-link" aria-label="Direct link to Dynamic Support Polygon" title="Direct link to Dynamic Support Polygon" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Extension</strong>: Includes momentum effects during movement</li>
+<li class=""><strong>Concept</strong>: Virtual support area accounting for dynamic effects</li>
+<li class=""><strong>Application</strong>: Walking and dynamic movement control</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="zero-moment-point-zmp">Zero Moment Point (ZMP)<a href="#zero-moment-point-zmp" class="hash-link" aria-label="Direct link to Zero Moment Point (ZMP)" title="Direct link to Zero Moment Point (ZMP)" translate="no">​</a></h3>
+<p>A critical concept for dynamic balance analysis:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="zmp-definition">ZMP Definition<a href="#zmp-definition" class="hash-link" aria-label="Direct link to ZMP Definition" title="Direct link to ZMP Definition" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Physical Meaning</strong>: Point where net moment of ground reaction force is zero</li>
+<li class=""><strong>Calculation</strong>: ZMP = (M_x/F_z, M_y/F_z) where M is moment and F_z is vertical force</li>
+<li class=""><strong>Stability Condition</strong>: ZMP must remain within support polygon</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="zmp-control">ZMP Control<a href="#zmp-control" class="hash-link" aria-label="Direct link to ZMP Control" title="Direct link to ZMP Control" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Control robot motion to keep ZMP within safe region</li>
+<li class=""><strong>Benefits</strong>: Mathematical framework for stable walking</li>
+<li class=""><strong>Applications</strong>: Bipedal walking pattern generation</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="balance-control-strategies">Balance Control Strategies<a href="#balance-control-strategies" class="hash-link" aria-label="Direct link to Balance Control Strategies" title="Direct link to Balance Control Strategies" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="passive-stability">Passive Stability<a href="#passive-stability" class="hash-link" aria-label="Direct link to Passive Stability" title="Direct link to Passive Stability" translate="no">​</a></h3>
+<p>Stability achieved through mechanical design rather than active control:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="wide-base-design">Wide Base Design<a href="#wide-base-design" class="hash-link" aria-label="Direct link to Wide Base Design" title="Direct link to Wide Base Design" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Large support polygon through wide stance</li>
+<li class=""><strong>Benefits</strong>: Increased stability margin</li>
+<li class=""><strong>Limitations</strong>: Reduced mobility, non-human-like appearance</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="low-center-of-mass">Low Center of Mass<a href="#low-center-of-mass" class="hash-link" aria-label="Direct link to Low Center of Mass" title="Direct link to Low Center of Mass" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Position heavy components low in robot structure</li>
+<li class=""><strong>Benefits</strong>: Increased stability, larger disturbance tolerance</li>
+<li class=""><strong>Limitations</strong>: Reduced dynamic performance, limited motion range</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="active-stability">Active Stability<a href="#active-stability" class="hash-link" aria-label="Direct link to Active Stability" title="Direct link to Active Stability" translate="no">​</a></h3>
+<p>Stability achieved through continuous feedback control:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="feedback-control">Feedback Control<a href="#feedback-control" class="hash-link" aria-label="Direct link to Feedback Control" title="Direct link to Feedback Control" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Measure balance state, apply corrective actions</li>
+<li class=""><strong>Sensors</strong>: IMUs, force sensors, joint encoders</li>
+<li class=""><strong>Actuation</strong>: Joint torque/position control</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="feedforward-control">Feedforward Control<a href="#feedforward-control" class="hash-link" aria-label="Direct link to Feedforward Control" title="Direct link to Feedforward Control" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Predict and compensate for known disturbances</li>
+<li class=""><strong>Examples</strong>: Gravity compensation, Coriolis forces</li>
+<li class=""><strong>Benefits</strong>: Anticipatory control, reduced feedback requirements</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="balance-control-hierarchies">Balance Control Hierarchies<a href="#balance-control-hierarchies" class="hash-link" aria-label="Direct link to Balance Control Hierarchies" title="Direct link to Balance Control Hierarchies" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="posture-control-level">Posture Control Level<a href="#posture-control-level" class="hash-link" aria-label="Direct link to Posture Control Level" title="Direct link to Posture Control Level" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Maintain overall body posture</li>
+<li class=""><strong>Inputs</strong>: Desired posture, current state</li>
+<li class=""><strong>Outputs</strong>: Joint angle references</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="balance-control-level">Balance Control Level<a href="#balance-control-level" class="hash-link" aria-label="Direct link to Balance Control Level" title="Direct link to Balance Control Level" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Maintain balance during disturbances</li>
+<li class=""><strong>Inputs</strong>: Balance state, disturbance estimates</li>
+<li class=""><strong>Outputs</strong>: Posture modifications for stability</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="task-control-level">Task Control Level<a href="#task-control-level" class="hash-link" aria-label="Direct link to Task Control Level" title="Direct link to Task Control Level" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Execute specific tasks while maintaining balance</li>
+<li class=""><strong>Inputs</strong>: Task goals, balance constraints</li>
+<li class=""><strong>Outputs</strong>: Task-oriented motion with balance preservation</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="balance-recovery-strategies">Balance Recovery Strategies<a href="#balance-recovery-strategies" class="hash-link" aria-label="Direct link to Balance Recovery Strategies" title="Direct link to Balance Recovery Strategies" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ankle-strategy">Ankle Strategy<a href="#ankle-strategy" class="hash-link" aria-label="Direct link to Ankle Strategy" title="Direct link to Ankle Strategy" translate="no">​</a></h3>
+<p>Using ankle joint adjustments to maintain balance:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="mechanism">Mechanism<a href="#mechanism" class="hash-link" aria-label="Direct link to Mechanism" title="Direct link to Mechanism" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Adjust ankle torque to counteract CoM displacement</li>
+<li class=""><strong>Application</strong>: Small disturbances, quiet standing</li>
+<li class=""><strong>Limitations</strong>: Limited range, ankle actuator constraints</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="control-implementation">Control Implementation<a href="#control-implementation" class="hash-link" aria-label="Direct link to Control Implementation" title="Direct link to Control Implementation" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Sensors</strong>: Ankle joint position, IMU data</li>
+<li class=""><strong>Actuation</strong>: Ankle joint control</li>
+<li class=""><strong>Tuning</strong>: Stiffness and damping parameters</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="hip-strategy">Hip Strategy<a href="#hip-strategy" class="hash-link" aria-label="Direct link to Hip Strategy" title="Direct link to Hip Strategy" translate="no">​</a></h3>
+<p>Using hip joint adjustments for larger balance corrections:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="mechanism-1">Mechanism<a href="#mechanism-1" class="hash-link" aria-label="Direct link to Mechanism" title="Direct link to Mechanism" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Hip movement to shift CoM position</li>
+<li class=""><strong>Application</strong>: Moderate disturbances</li>
+<li class=""><strong>Characteristics</strong>: More powerful than ankle strategy</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="control-implementation-1">Control Implementation<a href="#control-implementation-1" class="hash-link" aria-label="Direct link to Control Implementation" title="Direct link to Control Implementation" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Sensors</strong>: Hip position, trunk orientation</li>
+<li class=""><strong>Actuation</strong>: Hip joint control</li>
+<li class=""><strong>Coordination</strong>: With other joints for optimal effect</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="stepping-strategy">Stepping Strategy<a href="#stepping-strategy" class="hash-link" aria-label="Direct link to Stepping Strategy" title="Direct link to Stepping Strategy" translate="no">​</a></h3>
+<p>Using stepping motion for large disturbances:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="mechanism-2">Mechanism<a href="#mechanism-2" class="hash-link" aria-label="Direct link to Mechanism" title="Direct link to Mechanism" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Move support point by taking a step</li>
+<li class=""><strong>Application</strong>: Large disturbances beyond other strategies</li>
+<li class=""><strong>Timing</strong>: Critical for effective recovery</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-planning">Step Planning<a href="#step-planning" class="hash-link" aria-label="Direct link to Step Planning" title="Direct link to Step Planning" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Parameters</strong>: Step location, timing, swing trajectory</li>
+<li class=""><strong>Considerations</strong>: Obstacle avoidance, new support polygon</li>
+<li class=""><strong>Execution</strong>: Coordinated swing leg control</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="hip-hop-strategy">Hip-Hop Strategy<a href="#hip-hop-strategy" class="hash-link" aria-label="Direct link to Hip-Hop Strategy" title="Direct link to Hip-Hop Strategy" translate="no">​</a></h3>
+<p>Combining hip and stepping strategies:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="mechanism-3">Mechanism<a href="#mechanism-3" class="hash-link" aria-label="Direct link to Mechanism" title="Direct link to Mechanism" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Use hip movement while preparing a step</li>
+<li class=""><strong>Benefits</strong>: More effective than either strategy alone</li>
+<li class=""><strong>Complexity</strong>: Requires sophisticated coordination</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="walking-and-dynamic-balance">Walking and Dynamic Balance<a href="#walking-and-dynamic-balance" class="hash-link" aria-label="Direct link to Walking and Dynamic Balance" title="Direct link to Walking and Dynamic Balance" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="walking-as-controlled-falling">Walking as Controlled Falling<a href="#walking-as-controlled-falling" class="hash-link" aria-label="Direct link to Walking as Controlled Falling" title="Direct link to Walking as Controlled Falling" translate="no">​</a></h3>
+<p>Understanding bipedal walking from a balance perspective:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="single-support-phase">Single Support Phase<a href="#single-support-phase" class="hash-link" aria-label="Direct link to Single Support Phase" title="Direct link to Single Support Phase" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Challenge</strong>: Balance on one foot while other leg swings</li>
+<li class=""><strong>Control</strong>: Continuous CoM adjustment</li>
+<li class=""><strong>Stability</strong>: Dynamic stability through movement</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="double-support-phase">Double Support Phase<a href="#double-support-phase" class="hash-link" aria-label="Direct link to Double Support Phase" title="Direct link to Double Support Phase" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Transfer weight between legs</li>
+<li class=""><strong>Control</strong>: Smooth transition, force management</li>
+<li class=""><strong>Duration</strong>: Critical for stability and efficiency</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="gait-parameters-and-balance">Gait Parameters and Balance<a href="#gait-parameters-and-balance" class="hash-link" aria-label="Direct link to Gait Parameters and Balance" title="Direct link to Gait Parameters and Balance" translate="no">​</a></h3>
+<p>How walking parameters affect balance:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-width">Step Width<a href="#step-width" class="hash-link" aria-label="Direct link to Step Width" title="Direct link to Step Width" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Effect</strong>: Wider steps increase stability margin</li>
+<li class=""><strong>Trade-off</strong>: Increased energy consumption, reduced speed</li>
+<li class=""><strong>Optimization</strong>: Balance between stability and efficiency</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="step-length">Step Length<a href="#step-length" class="hash-link" aria-label="Direct link to Step Length" title="Direct link to Step Length" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Effect</strong>: Longer steps require more balance control</li>
+<li class=""><strong>Trade-off</strong>: Speed vs. stability</li>
+<li class=""><strong>Adaptation</strong>: Adjust based on stability requirements</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="walking-speed">Walking Speed<a href="#walking-speed" class="hash-link" aria-label="Direct link to Walking Speed" title="Direct link to Walking Speed" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Effect</strong>: Faster walking changes balance dynamics</li>
+<li class=""><strong>Control</strong>: Adapt balance strategies to speed</li>
+<li class=""><strong>Limitations</strong>: Stability vs. performance trade-offs</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="sensory-integration-for-balance">Sensory Integration for Balance<a href="#sensory-integration-for-balance" class="hash-link" aria-label="Direct link to Sensory Integration for Balance" title="Direct link to Sensory Integration for Balance" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="proprioceptive-sensing">Proprioceptive Sensing<a href="#proprioceptive-sensing" class="hash-link" aria-label="Direct link to Proprioceptive Sensing" title="Direct link to Proprioceptive Sensing" translate="no">​</a></h3>
+<p>Using internal sensors to assess balance state:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="joint-position-sensing">Joint Position Sensing<a href="#joint-position-sensing" class="hash-link" aria-label="Direct link to Joint Position Sensing" title="Direct link to Joint Position Sensing" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Determine body configuration</li>
+<li class=""><strong>Importance</strong>: Critical for CoM calculation</li>
+<li class=""><strong>Accuracy</strong>: High precision required for balance</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="inertial-sensing">Inertial Sensing<a href="#inertial-sensing" class="hash-link" aria-label="Direct link to Inertial Sensing" title="Direct link to Inertial Sensing" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Measure orientation and acceleration</li>
+<li class=""><strong>Sensors</strong>: Gyroscopes, accelerometers</li>
+<li class=""><strong>Integration</strong>: Estimate trunk orientation and angular rates</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="forcetorque-sensing">Force/Torque Sensing<a href="#forcetorque-sensing" class="hash-link" aria-label="Direct link to Force/Torque Sensing" title="Direct link to Force/Torque Sensing" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Measure ground reaction forces</li>
+<li class=""><strong>Location</strong>: Feet, legs, body</li>
+<li class=""><strong>Application</strong>: ZMP calculation, contact detection</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="visual-feedback-for-balance">Visual Feedback for Balance<a href="#visual-feedback-for-balance" class="hash-link" aria-label="Direct link to Visual Feedback for Balance" title="Direct link to Visual Feedback for Balance" translate="no">​</a></h3>
+<p>Using vision to enhance balance control:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="visual-vestibular-integration">Visual Vestibular Integration<a href="#visual-vestibular-integration" class="hash-link" aria-label="Direct link to Visual Vestibular Integration" title="Direct link to Visual Vestibular Integration" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Concept</strong>: Combine visual and inertial information</li>
+<li class=""><strong>Benefits</strong>: Improved orientation estimation</li>
+<li class=""><strong>Challenges</strong>: Processing delay, reliability</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="environmental-awareness">Environmental Awareness<a href="#environmental-awareness" class="hash-link" aria-label="Direct link to Environmental Awareness" title="Direct link to Environmental Awareness" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Detect obstacles, terrain changes</li>
+<li class=""><strong>Application</strong>: Proactive balance adjustments</li>
+<li class=""><strong>Integration</strong>: With other sensory modalities</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="tactile-and-haptic-feedback">Tactile and Haptic Feedback<a href="#tactile-and-haptic-feedback" class="hash-link" aria-label="Direct link to Tactile and Haptic Feedback" title="Direct link to Tactile and Haptic Feedback" translate="no">​</a></h3>
+<p>Using contact sensing for balance:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="ground-contact-sensing">Ground Contact Sensing<a href="#ground-contact-sensing" class="hash-link" aria-label="Direct link to Ground Contact Sensing" title="Direct link to Ground Contact Sensing" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Detect foot contact and pressure distribution</li>
+<li class=""><strong>Application</strong>: Balance control, step detection</li>
+<li class=""><strong>Integration</strong>: With force control systems</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="control-algorithms-for-balance">Control Algorithms for Balance<a href="#control-algorithms-for-balance" class="hash-link" aria-label="Direct link to Control Algorithms for Balance" title="Direct link to Control Algorithms for Balance" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="linear-inverted-pendulum-model-lipm">Linear Inverted Pendulum Model (LIPM)<a href="#linear-inverted-pendulum-model-lipm" class="hash-link" aria-label="Direct link to Linear Inverted Pendulum Model (LIPM)" title="Direct link to Linear Inverted Pendulum Model (LIPM)" translate="no">​</a></h3>
+<p>Simplified model for balance control:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-assumptions">Model Assumptions<a href="#model-assumptions" class="hash-link" aria-label="Direct link to Model Assumptions" title="Direct link to Model Assumptions" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>CoM Height</strong>: Constant height during walking</li>
+<li class=""><strong>Dynamics</strong>: Simplified to inverted pendulum</li>
+<li class=""><strong>Benefits</strong>: Computational efficiency, analytical solutions</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="control-implementation-2">Control Implementation<a href="#control-implementation-2" class="hash-link" aria-label="Direct link to Control Implementation" title="Direct link to Control Implementation" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Trajectory Generation</strong>: CoM trajectory planning</li>
+<li class=""><strong>ZMP Planning</strong>: Desired ZMP trajectory</li>
+<li class=""><strong>Applications</strong>: Walking pattern generation</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cart-table-model">Cart-Table Model<a href="#cart-table-model" class="hash-link" aria-label="Direct link to Cart-Table Model" title="Direct link to Cart-Table Model" translate="no">​</a></h3>
+<p>More complex model including angular momentum:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-features">Model Features<a href="#model-features" class="hash-link" aria-label="Direct link to Model Features" title="Direct link to Model Features" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Angular Momentum</strong>: Considers whole-body angular momentum</li>
+<li class=""><strong>Control Variables</strong>: CoM position and angular momentum</li>
+<li class=""><strong>Benefits</strong>: Better dynamic representation</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="control-approach">Control Approach<a href="#control-approach" class="hash-link" aria-label="Direct link to Control Approach" title="Direct link to Control Approach" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Optimization</strong>: Minimize tracking error</li>
+<li class=""><strong>Constraints</strong>: Physical limits, stability requirements</li>
+<li class=""><strong>Applications</strong>: Dynamic balance, complex movements</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="capture-point-control">Capture Point Control<a href="#capture-point-control" class="hash-link" aria-label="Direct link to Capture Point Control" title="Direct link to Capture Point Control" translate="no">​</a></h3>
+<p>Advanced balance control concept:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="capture-point-definition">Capture Point Definition<a href="#capture-point-definition" class="hash-link" aria-label="Direct link to Capture Point Definition" title="Direct link to Capture Point Definition" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Concept</strong>: Point where robot can come to rest</li>
+<li class=""><strong>Calculation</strong>: Based on current state and dynamics</li>
+<li class=""><strong>Application</strong>: Balance recovery planning</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="control-strategy">Control Strategy<a href="#control-strategy" class="hash-link" aria-label="Direct link to Control Strategy" title="Direct link to Control Strategy" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Plan step to capture current momentum</li>
+<li class=""><strong>Benefits</strong>: Optimal balance recovery</li>
+<li class=""><strong>Implementation</strong>: Real-time capture point calculation</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="conceptual-exercise-101-balance-control-system-design">Conceptual Exercise 10.1: Balance Control System Design<a href="#conceptual-exercise-101-balance-control-system-design" class="hash-link" aria-label="Direct link to Conceptual Exercise 10.1: Balance Control System Design" title="Direct link to Conceptual Exercise 10.1: Balance Control System Design" translate="no">​</a></h2>
+<p>Design a balance control system for a humanoid robot that needs to stand on one foot while reaching for an object. Consider:</p>
+<ol>
+<li class="">What balance control strategies would you combine for this task?</li>
+<li class="">How would you coordinate reaching motion with balance maintenance?</li>
+<li class="">What sensory information would be most critical for this task?</li>
+<li class="">How would you handle unexpected disturbances during the reach?</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="stability-analysis-and-metrics">Stability Analysis and Metrics<a href="#stability-analysis-and-metrics" class="hash-link" aria-label="Direct link to Stability Analysis and Metrics" title="Direct link to Stability Analysis and Metrics" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="stability-margins">Stability Margins<a href="#stability-margins" class="hash-link" aria-label="Direct link to Stability Margins" title="Direct link to Stability Margins" translate="no">​</a></h3>
+<p>Quantifying stability robustness:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="static-stability-margin">Static Stability Margin<a href="#static-stability-margin" class="hash-link" aria-label="Direct link to Static Stability Margin" title="Direct link to Static Stability Margin" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Measurement</strong>: Distance from CoM to support polygon edge</li>
+<li class=""><strong>Interpretation</strong>: Larger margin = more stable</li>
+<li class=""><strong>Application</strong>: Posture selection, safety monitoring</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="dynamic-stability-margin">Dynamic Stability Margin<a href="#dynamic-stability-margin" class="hash-link" aria-label="Direct link to Dynamic Stability Margin" title="Direct link to Dynamic Stability Margin" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Measurement</strong>: Account for momentum effects</li>
+<li class=""><strong>Metrics</strong>: Future state prediction, stability boundaries</li>
+<li class=""><strong>Application</strong>: Dynamic movement planning</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="disturbance-tolerance">Disturbance Tolerance<a href="#disturbance-tolerance" class="hash-link" aria-label="Direct link to Disturbance Tolerance" title="Direct link to Disturbance Tolerance" translate="no">​</a></h3>
+<p>Measuring ability to handle external disturbances:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="maximum-disturbance">Maximum Disturbance<a href="#maximum-disturbance" class="hash-link" aria-label="Direct link to Maximum Disturbance" title="Direct link to Maximum Disturbance" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Measurement</strong>: Largest disturbance before losing balance</li>
+<li class=""><strong>Testing</strong>: Applied force/impulse experiments</li>
+<li class=""><strong>Factors</strong>: Control parameters, robot configuration</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="recovery-time">Recovery Time<a href="#recovery-time" class="hash-link" aria-label="Direct link to Recovery Time" title="Direct link to Recovery Time" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Measurement</strong>: Time to return to stable state after disturbance</li>
+<li class=""><strong>Importance</strong>: Critical for dynamic environments</li>
+<li class=""><strong>Optimization</strong>: Balance between speed and stability</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="balance-learning-and-adaptation">Balance Learning and Adaptation<a href="#balance-learning-and-adaptation" class="hash-link" aria-label="Direct link to Balance Learning and Adaptation" title="Direct link to Balance Learning and Adaptation" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="adaptive-balance-control">Adaptive Balance Control<a href="#adaptive-balance-control" class="hash-link" aria-label="Direct link to Adaptive Balance Control" title="Direct link to Adaptive Balance Control" translate="no">​</a></h3>
+<p>Learning to improve balance performance:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="parameter-adaptation">Parameter Adaptation<a href="#parameter-adaptation" class="hash-link" aria-label="Direct link to Parameter Adaptation" title="Direct link to Parameter Adaptation" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Adjust control parameters based on performance</li>
+<li class=""><strong>Methods</strong>: Gradient descent, evolutionary algorithms</li>
+<li class=""><strong>Applications</strong>: Personalized control, damage recovery</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-learning">Model Learning<a href="#model-learning" class="hash-link" aria-label="Direct link to Model Learning" title="Direct link to Model Learning" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Learn robot dynamics model from experience</li>
+<li class=""><strong>Benefits</strong>: Improved prediction accuracy</li>
+<li class=""><strong>Challenges</strong>: Computational requirements, safety</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="balance-skill-acquisition">Balance Skill Acquisition<a href="#balance-skill-acquisition" class="hash-link" aria-label="Direct link to Balance Skill Acquisition" title="Direct link to Balance Skill Acquisition" translate="no">​</a></h3>
+<p>Learning complex balance behaviors:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="imitation-learning">Imitation Learning<a href="#imitation-learning" class="hash-link" aria-label="Direct link to Imitation Learning" title="Direct link to Imitation Learning" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Learn balance strategies from demonstrations</li>
+<li class=""><strong>Applications</strong>: Human-like balance behaviors</li>
+<li class=""><strong>Challenges</strong>: Generalization, safety</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="reinforcement-learning">Reinforcement Learning<a href="#reinforcement-learning" class="hash-link" aria-label="Direct link to Reinforcement Learning" title="Direct link to Reinforcement Learning" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Learn balance through trial and error</li>
+<li class=""><strong>Rewards</strong>: Stability, efficiency, safety</li>
+<li class=""><strong>Applications</strong>: Dynamic balance, adaptive control</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="safety-and-robustness">Safety and Robustness<a href="#safety-and-robustness" class="hash-link" aria-label="Direct link to Safety and Robustness" title="Direct link to Safety and Robustness" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="failure-detection-and-recovery">Failure Detection and Recovery<a href="#failure-detection-and-recovery" class="hash-link" aria-label="Direct link to Failure Detection and Recovery" title="Direct link to Failure Detection and Recovery" translate="no">​</a></h3>
+<p>Handling balance control failures safely:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="imminent-fall-detection">Imminent Fall Detection<a href="#imminent-fall-detection" class="hash-link" aria-label="Direct link to Imminent Fall Detection" title="Direct link to Imminent Fall Detection" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Approach</strong>: Predict loss of balance before it occurs</li>
+<li class=""><strong>Indicators</strong>: ZMP outside support polygon, high angular velocity</li>
+<li class=""><strong>Response</strong>: Protective actions, safe fall preparation</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="safe-fall-strategies">Safe Fall Strategies<a href="#safe-fall-strategies" class="hash-link" aria-label="Direct link to Safe Fall Strategies" title="Direct link to Safe Fall Strategies" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Objective</strong>: Minimize injury during unavoidable falls</li>
+<li class=""><strong>Approaches</strong>: Controlled fall direction, impact absorption</li>
+<li class=""><strong>Design</strong>: Mechanical and control strategies</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="robust-control-design">Robust Control Design<a href="#robust-control-design" class="hash-link" aria-label="Direct link to Robust Control Design" title="Direct link to Robust Control Design" translate="no">​</a></h3>
+<p>Ensuring stability under uncertainties:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-uncertainty">Model Uncertainty<a href="#model-uncertainty" class="hash-link" aria-label="Direct link to Model Uncertainty" title="Direct link to Model Uncertainty" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Sources</strong>: Parameter variations, unmodeled dynamics</li>
+<li class=""><strong>Approach</strong>: Robust control design, uncertainty modeling</li>
+<li class=""><strong>Benefits</strong>: Reliable performance despite model errors</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="sensor-noise-and-failure">Sensor Noise and Failure<a href="#sensor-noise-and-failure" class="hash-link" aria-label="Direct link to Sensor Noise and Failure" title="Direct link to Sensor Noise and Failure" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Challenges</strong>: Noisy measurements, sensor failures</li>
+<li class=""><strong>Approaches</strong>: Sensor fusion, fault detection, graceful degradation</li>
+<li class=""><strong>Implementation</strong>: Redundant sensors, robust estimation</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="advanced-balance-concepts">Advanced Balance Concepts<a href="#advanced-balance-concepts" class="hash-link" aria-label="Direct link to Advanced Balance Concepts" title="Direct link to Advanced Balance Concepts" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="multi-contact-balance">Multi-Contact Balance<a href="#multi-contact-balance" class="hash-link" aria-label="Direct link to Multi-Contact Balance" title="Direct link to Multi-Contact Balance" translate="no">​</a></h3>
+<p>Balance with multiple support points:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="applications">Applications<a href="#applications" class="hash-link" aria-label="Direct link to Applications" title="Direct link to Applications" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Scenarios</strong>: Climbing, complex terrain, manipulation</li>
+<li class=""><strong>Challenges</strong>: Contact state uncertainty, complex support regions</li>
+<li class=""><strong>Control</strong>: Multi-point contact management</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="contact-planning">Contact Planning<a href="#contact-planning" class="hash-link" aria-label="Direct link to Contact Planning" title="Direct link to Contact Planning" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Function</strong>: Determine optimal contact points</li>
+<li class=""><strong>Optimization</strong>: Stability, task performance, energy efficiency</li>
+<li class=""><strong>Constraints</strong>: Physical feasibility, safety</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="human-like-balance">Human-Like Balance<a href="#human-like-balance" class="hash-link" aria-label="Direct link to Human-Like Balance" title="Direct link to Human-Like Balance" translate="no">​</a></h3>
+<p>Mimicking human balance strategies:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="human-balance-characteristics">Human Balance Characteristics<a href="#human-balance-characteristics" class="hash-link" aria-label="Direct link to Human Balance Characteristics" title="Direct link to Human Balance Characteristics" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Compliance</strong>: Natural compliance in joints</li>
+<li class=""><strong>Strategy Selection</strong>: Automatic strategy switching</li>
+<li class=""><strong>Learning</strong>: Adaptation to individual preferences</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="implementation-challenges">Implementation Challenges<a href="#implementation-challenges" class="hash-link" aria-label="Direct link to Implementation Challenges" title="Direct link to Implementation Challenges" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Complexity</strong>: Replicating sophisticated human control</li>
+<li class=""><strong>Safety</strong>: Ensuring robot safety during learning</li>
+<li class=""><strong>Efficiency</strong>: Balancing biological accuracy with practical needs</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="summary">Summary<a href="#summary" class="hash-link" aria-label="Direct link to Summary" title="Direct link to Summary" translate="no">​</a></h2>
+<p>Balance and stability are fundamental capabilities for humanoid robots, requiring sophisticated integration of multiple control strategies, sensory modalities, and mathematical models. The complexity of maintaining balance while performing tasks requires hierarchical control approaches that can adapt to changing conditions and disturbances. Success in balance control enables the full range of humanoid capabilities from simple standing to complex dynamic movements.</p>
+<hr>
+<p><strong>Previous</strong>: <a class="" href="/docs/chapter-9-movement-control">Chapter 9 - Introduction to Movement Control</a>
+<strong>Next</strong>: <a class="" href="/docs/chapter-11-path-planning">Chapter 11 - Path Planning and Navigation Basics</a></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapter-10-balance-stability.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/chapter-9-movement-control"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 9 - Introduction to Movement Control</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/chapter-11-path-planning"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 11 - Path Planning and Navigation Basics</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction-to-balance-in-humanoid-systems" class="table-of-contents__link toc-highlight">Introduction to Balance in Humanoid Systems</a></li><li><a href="#physical-principles-of-balance" class="table-of-contents__link toc-highlight">Physical Principles of Balance</a><ul><li><a href="#center-of-mass-com" class="table-of-contents__link toc-highlight">Center of Mass (CoM)</a></li><li><a href="#support-polygon" class="table-of-contents__link toc-highlight">Support Polygon</a></li><li><a href="#zero-moment-point-zmp" class="table-of-contents__link toc-highlight">Zero Moment Point (ZMP)</a></li></ul></li><li><a href="#balance-control-strategies" class="table-of-contents__link toc-highlight">Balance Control Strategies</a><ul><li><a href="#passive-stability" class="table-of-contents__link toc-highlight">Passive Stability</a></li><li><a href="#active-stability" class="table-of-contents__link toc-highlight">Active Stability</a></li><li><a href="#balance-control-hierarchies" class="table-of-contents__link toc-highlight">Balance Control Hierarchies</a></li></ul></li><li><a href="#balance-recovery-strategies" class="table-of-contents__link toc-highlight">Balance Recovery Strategies</a><ul><li><a href="#ankle-strategy" class="table-of-contents__link toc-highlight">Ankle Strategy</a></li><li><a href="#hip-strategy" class="table-of-contents__link toc-highlight">Hip Strategy</a></li><li><a href="#stepping-strategy" class="table-of-contents__link toc-highlight">Stepping Strategy</a></li><li><a href="#hip-hop-strategy" class="table-of-contents__link toc-highlight">Hip-Hop Strategy</a></li></ul></li><li><a href="#walking-and-dynamic-balance" class="table-of-contents__link toc-highlight">Walking and Dynamic Balance</a><ul><li><a href="#walking-as-controlled-falling" class="table-of-contents__link toc-highlight">Walking as Controlled Falling</a></li><li><a href="#gait-parameters-and-balance" class="table-of-contents__link toc-highlight">Gait Parameters and Balance</a></li></ul></li><li><a href="#sensory-integration-for-balance" class="table-of-contents__link toc-highlight">Sensory Integration for Balance</a><ul><li><a href="#proprioceptive-sensing" class="table-of-contents__link toc-highlight">Proprioceptive Sensing</a></li><li><a href="#visual-feedback-for-balance" class="table-of-contents__link toc-highlight">Visual Feedback for Balance</a></li><li><a href="#tactile-and-haptic-feedback" class="table-of-contents__link toc-highlight">Tactile and Haptic Feedback</a></li></ul></li><li><a href="#control-algorithms-for-balance" class="table-of-contents__link toc-highlight">Control Algorithms for Balance</a><ul><li><a href="#linear-inverted-pendulum-model-lipm" class="table-of-contents__link toc-highlight">Linear Inverted Pendulum Model (LIPM)</a></li><li><a href="#cart-table-model" class="table-of-contents__link toc-highlight">Cart-Table Model</a></li><li><a href="#capture-point-control" class="table-of-contents__link toc-highlight">Capture Point Control</a></li></ul></li><li><a href="#conceptual-exercise-101-balance-control-system-design" class="table-of-contents__link toc-highlight">Conceptual Exercise 10.1: Balance Control System Design</a></li><li><a href="#stability-analysis-and-metrics" class="table-of-contents__link toc-highlight">Stability Analysis and Metrics</a><ul><li><a href="#stability-margins" class="table-of-contents__link toc-highlight">Stability Margins</a></li><li><a href="#disturbance-tolerance" class="table-of-contents__link toc-highlight">Disturbance Tolerance</a></li></ul></li><li><a href="#balance-learning-and-adaptation" class="table-of-contents__link toc-highlight">Balance Learning and Adaptation</a><ul><li><a href="#adaptive-balance-control" class="table-of-contents__link toc-highlight">Adaptive Balance Control</a></li><li><a href="#balance-skill-acquisition" class="table-of-contents__link toc-highlight">Balance Skill Acquisition</a></li></ul></li><li><a href="#safety-and-robustness" class="table-of-contents__link toc-highlight">Safety and Robustness</a><ul><li><a href="#failure-detection-and-recovery" class="table-of-contents__link toc-highlight">Failure Detection and Recovery</a></li><li><a href="#robust-control-design" class="table-of-contents__link toc-highlight">Robust Control Design</a></li></ul></li><li><a href="#advanced-balance-concepts" class="table-of-contents__link toc-highlight">Advanced Balance Concepts</a><ul><li><a href="#multi-contact-balance" class="table-of-contents__link toc-highlight">Multi-Contact Balance</a></li><li><a href="#human-like-balance" class="table-of-contents__link toc-highlight">Human-Like Balance</a></li></ul></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Book</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Introduction</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://example.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">Physical AI Community<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://example.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">Humanoid Robotics Forum<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://docs.ros.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">ROS 2 Documentation<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/semiceto/hackathon_book" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Book. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
