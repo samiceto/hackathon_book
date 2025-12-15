@@ -20,15 +20,15 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-book-site.example.com',
+  url: 'https://semiceto.github.io.hackathon_book/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'your-organization', // Usually your GitHub org/user name.
-  projectName: 'physical-ai-book', // Usually your repo name.
+  organizationName: 'samiceto', // Usually your GitHub org/user name.
+  projectName: 'hackathon_book', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -97,7 +97,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/your-organization/physical-ai-book',
+            href: 'https://github.com/semiceto/hackathon_book',
             label: 'GitHub',
             position: 'right',
           },
@@ -141,7 +141,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/your-organization/physical-ai-book',
+                href: 'https://github.com/semiceto/hackathon_book',
               },
             ],
           },
