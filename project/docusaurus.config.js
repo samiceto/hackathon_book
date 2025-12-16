@@ -23,7 +23,7 @@ const config = {
   url: 'https://semiceto.github.io.hackathon_book/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/hackathon_book/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

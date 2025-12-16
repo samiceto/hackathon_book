@@ -113,18 +113,12 @@ The chatbot must answer reader questions using the book's content, including que
 
 ## Core Principles (Phase 2)
 
-### I. Book-native integration
-The chatbot must function directly inside the book without redirecting users elsewhere.
-
-### II. Zero-install access
-Readers must use the chatbot instantly in-browser without creating an account or installing software.
-
-### III. Content-accurate answers
+### I. Content-accurate answers
 All responses must rely strictly on:
 - the book's text, and
 - optionally user-highlighted selections.
 
-### IV. Lightweight, cost-efficient design
+### II. Lightweight, cost-efficient design
 The solution must operate entirely within free-tier or near-zero-cost infrastructure.
 
 ---
@@ -147,7 +141,7 @@ Backend must use:
 
 ### III. Frontend Integration Requirements
 Frontend must:
-- Use **ChatKit js**
+- Use **ChatKit js** (already integrated)
 - Embed the chatbot widget or iframe inside the book
 - Support highlight → "Ask about this selection" flow
 
