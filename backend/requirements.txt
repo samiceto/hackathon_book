@@ -13,15 +13,6 @@ google-generativeai==0.3.2
 
 # OpenAI Agents SDK
 agents>=0.2.0
-git+https://github.com/openai/chatkit-python.git@v1.4.0
-
-# Web Scraping (only needed for ingestion - not for deployed backend)
-# beautifulsoup4==4.12.3
-# lxml==5.1.0
-# requests==2.31.0
-
-# Text Processing (only needed for ingestion - not for deployed backend)
-# langchain-text-splitters==0.0.1
 
 # Environment Variables
 python-dotenv==1.0.1
@@ -29,10 +20,7 @@ python-dotenv==1.0.1
 # Rate Limiting
 slowapi==0.1.9
 
-# CORS
-# (included in fastapi, no separate install needed)
-
-# Testing (optional)
-pytest==7.4.4
-pytest-asyncio==0.23.3
-httpx==0.26.0
+# Testing (optional - comment out for production)
+# pytest==7.4.4
+# pytest-asyncio==0.23.3
+# httpx==0.26.0

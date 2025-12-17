@@ -1,34 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChatKit, useChatKit } from '@openai/chatkit-react';
 import './chatbot.css';
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [error, setError] = useState(null);
+  const [messages, setMessages] = useState([
+    {
+      role: 'assistant',
+      content: 'Hello! I can answer questions about the Physical AI & Humanoid Robotics book. Ask me anything!',
+    },
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedText, setSelectedText] = useState('');
-  const chatkitRef = useRef(null);
+  const messagesEndRef = useRef(null);
 
-  const { control } = useChatKit({
-    api: {
-      // Demo configuration - replace with your actual backend URL in docusaurus.config.js customFields
-      url: 'http://localhost:8000/chatkit',
-      domainKey: 'local-dev',
-    },
-    onError: (err) => {
-      console.error('ChatKit error:', err);
-      setError(err.message);
-    },
-  });
+  // API URL based on environment
+  const API_URL = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+    ? 'http://localhost:8000/api/chat'
+    : 'https://hackathon-book-kr56.onrender.com/api/chat';
+
+  // Auto-scroll to bottom when new messages arrive
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   useEffect(() => {
-    console.log('ChatBot component mounted');
-    console.log('Control:', control);
-
-    // Store control reference for sending actions
-    if (control) {
-      chatkitRef.current = control;
-    }
-  }, [control]);
+    scrollToBottom();
+  }, [messages]);
 
   // Handle text selection from the page
   useEffect(() => {
@@ -42,7 +40,6 @@ export default function ChatBot() {
       }
     };
 
-    // Listen for selection changes on the document
     document.addEventListener('mouseup', handleSelection);
     document.addEventListener('keyup', handleSelection);
 
@@ -52,32 +49,58 @@ export default function ChatBot() {
     };
   }, []);
 
-  // Send selected text when chat opens (if there's a selection)
-  useEffect(() => {
-    const sendSelectionToBackend = async () => {
-      if (isOpen && selectedText && chatkitRef.current) {
-        try {
-          console.log('Sending selected text to backend:', selectedText.substring(0, 100));
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-          // Send custom action with selected text
-          await chatkitRef.current.sendCustomAction({
-            type: 'text_selection',
-            payload: { text: selectedText },
-          });
+    if (!inputValue.trim()) return;
 
-          console.log('Selected text sent successfully');
-        } catch (err) {
-          console.error('Error sending selected text:', err);
+    const userMessage = inputValue.trim();
+    setInputValue('');
+
+    // Add user message to chat
+    setMessages((prev) => [...prev, { role: 'user', content: userMessage }]);
+    setIsLoading(true);
+
+    try {
+      // Call backend API with selected text if available
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          query: userMessage,
+          selection_text: selectedText || null,
+        }),
+      });
+
+      if (!response.ok) {
+        if (response.status === 429) {
+          throw new Error('Rate limit exceeded. Please wait a moment and try again.');
         }
+        throw new Error(`API error: ${response.status}`);
       }
-    };
 
-    sendSelectionToBackend();
-  }, [isOpen, selectedText]);
+      const data = await response.json();
 
-  if (error) {
-    console.log('ChatKit error detected:', error);
-  }
+      // Add assistant response to chat
+      setMessages((prev) => [...prev, { role: 'assistant', content: data.answer }]);
+
+      // Clear selected text after using it
+      setSelectedText('');
+    } catch (err) {
+      console.error('Chat error:', err);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          content: `⚠️ Error: ${err.message}`,
+        },
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
@@ -121,18 +144,62 @@ export default function ChatBot() {
               ×
             </button>
           </div>
+
           <div className="chatbot-content">
-            {error ? (
-              <div className="chatbot-error">
-                <p>⚠️ Unable to connect to chat service</p>
-                <p className="error-details">{error}</p>
-              </div>
-            ) : (
-              <ChatKit
-                control={control}
-                className="chatbot-widget"
+            <div className="chatbot-messages">
+              {messages.map((message, index) => (
+                <div
+                  key={index}
+                  className={`chatbot-message chatbot-message-${message.role}`}
+                >
+                  <div className="chatbot-message-content">
+                    {message.content}
+                  </div>
+                </div>
+              ))}
+              {isLoading && (
+                <div className="chatbot-message chatbot-message-assistant">
+                  <div className="chatbot-message-content">
+                    <div className="chatbot-loading">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+
+            <form className="chatbot-input-form" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                className="chatbot-input"
+                placeholder="Ask about the book..."
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                disabled={isLoading}
               />
-            )}
+              <button
+                type="submit"
+                className="chatbot-send-button"
+                disabled={isLoading || !inputValue.trim()}
+                aria-label="Send message"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 10L18 2L10 18L8 11L2 10Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </form>
           </div>
         </div>
       )}
