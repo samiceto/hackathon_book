@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChatKit, useChatKit } from '@openai/chatkit-react';
 import './chatbot.css';
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedText, setSelectedText] = useState('');
+  const chatkitRef = useRef(null);
 
   const { control } = useChatKit({
     api: {
@@ -21,7 +23,57 @@ export default function ChatBot() {
   useEffect(() => {
     console.log('ChatBot component mounted');
     console.log('Control:', control);
+
+    // Store control reference for sending actions
+    if (control) {
+      chatkitRef.current = control;
+    }
   }, [control]);
+
+  // Handle text selection from the page
+  useEffect(() => {
+    const handleSelection = () => {
+      const selection = window.getSelection();
+      const text = selection?.toString().trim();
+
+      if (text && text.length > 0) {
+        setSelectedText(text);
+        console.log('Text selected:', text.substring(0, 100));
+      }
+    };
+
+    // Listen for selection changes on the document
+    document.addEventListener('mouseup', handleSelection);
+    document.addEventListener('keyup', handleSelection);
+
+    return () => {
+      document.removeEventListener('mouseup', handleSelection);
+      document.removeEventListener('keyup', handleSelection);
+    };
+  }, []);
+
+  // Send selected text when chat opens (if there's a selection)
+  useEffect(() => {
+    const sendSelectionToBackend = async () => {
+      if (isOpen && selectedText && chatkitRef.current) {
+        try {
+          console.log('Sending selected text to backend:', selectedText.substring(0, 100));
+
+          // Send custom action with selected text
+          await chatkitRef.current.sendCustomAction({
+            type: 'text_selection',
+            payload: { text: selectedText },
+          });
+
+          console.log('Selected text sent successfully');
+        } catch (err) {
+          console.error('Error sending selected text:', err);
+        }
+      }
+    };
+
+    sendSelectionToBackend();
+  }, [isOpen, selectedText]);
 
   if (error) {
     console.log('ChatKit error detected:', error);
@@ -53,7 +105,14 @@ export default function ChatBot() {
       {isOpen && (
         <div className="chatbot-container">
           <div className="chatbot-header">
-            <span>AI Assistant</span>
+            <div>
+              <span>AI Assistant</span>
+              {selectedText && (
+                <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '2px' }}>
+                  📌 Text selected: "{selectedText.substring(0, 30)}{selectedText.length > 30 ? '...' : ''}"
+                </div>
+              )}
+            </div>
             <button
               className="chatbot-close-button"
               onClick={() => setIsOpen(false)}
