@@ -7,6 +7,7 @@ from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from pydantic import BaseModel
+from typing import Optional
 import logging
 
 from src.config.settings import settings
@@ -51,7 +52,7 @@ chatkit_server = None
 class ChatRequest(BaseModel):
     """Request model for /api/chat endpoint."""
     query: str
-    selection_text: str = None
+    selection_text: Optional[str] = None
 
 
 class ChatResponse(BaseModel):
