@@ -112,8 +112,8 @@ export default function ChatBot() {
       >
         {isOpen ? (
           <svg
-            width="28"
-            height="28"
+            width="22"
+            height="22"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -125,8 +125,8 @@ export default function ChatBot() {
           </svg>
         ) : (
           <svg
-            width="28"
-            height="28"
+            width="22"
+            height="22"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -144,10 +144,10 @@ export default function ChatBot() {
         <div className="chatbot-container">
           <div className="chatbot-header">
             <div style={{ zIndex: 1 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -160,8 +160,8 @@ export default function ChatBot() {
                 <span>Physical AI Assistant</span>
               </div>
               {selectedText && (
-                <div style={{ fontSize: '0.75rem', opacity: 0.9, marginTop: '6px', fontWeight: 400 }}>
-                  📌 Text selected: "{selectedText.substring(0, 30)}{selectedText.length > 30 ? '...' : ''}"
+                <div style={{ fontSize: '0.7rem', opacity: 0.9, marginTop: '4px', fontWeight: 400 }}>
+                  📌 "{selectedText.substring(0, 25)}{selectedText.length > 25 ? '...' : ''}"
                 </div>
               )}
             </div>
@@ -216,8 +216,8 @@ export default function ChatBot() {
                 aria-label="Send message"
               >
                 <svg
-                  width="20"
-                  height="20"
+                  width="16"
+                  height="16"
                   viewBox="0 0 20 20"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
