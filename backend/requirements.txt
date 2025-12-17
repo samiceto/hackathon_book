@@ -15,13 +15,13 @@ google-generativeai==0.3.2
 agents>=0.2.0
 git+https://github.com/openai/chatkit-python.git
 
-# Web Scraping
-beautifulsoup4==4.12.3
-lxml==5.1.0
-requests==2.31.0
+# Web Scraping (only needed for ingestion - not for deployed backend)
+# beautifulsoup4==4.12.3
+# lxml==5.1.0
+# requests==2.31.0
 
-# Text Processing
-langchain-text-splitters==0.0.1
+# Text Processing (only needed for ingestion - not for deployed backend)
+# langchain-text-splitters==0.0.1
 
 # Environment Variables
 python-dotenv==1.0.1
