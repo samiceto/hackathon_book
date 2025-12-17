@@ -13,7 +13,7 @@ google-generativeai==0.3.2
 
 # OpenAI Agents SDK
 agents>=0.2.0
-git+https://github.com/openai/chatkit-python.git
+git+https://github.com/openai/chatkit-python.git@v1.4.0
 
 # Web Scraping (only needed for ingestion - not for deployed backend)
 # beautifulsoup4==4.12.3
