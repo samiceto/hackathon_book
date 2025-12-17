@@ -17,7 +17,7 @@ gemini_provider = AsyncOpenAI(
     api_key=settings.GEMINI_API_KEY,
     base_url=settings.GEMINI_BASE_URL
 )
-print("gemini key",settings.GEMINI_API_KEY)
+
 # Wrap provider in OpenAIChatCompletionsModel
 gemini_model = OpenAIChatCompletionsModel(
     model=settings.GEMINI_MODEL,
