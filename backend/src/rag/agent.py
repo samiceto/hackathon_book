@@ -1,9 +1,10 @@
 """
-OpenAI Agent with Gemini LLM: Direct API implementation for RAG question answering.
+OpenAI Agent with Gemini LLM: Agent setup with retrieval tool for RAG question answering.
 """
-import json
+import asyncio
 import logging
 from openai import AsyncOpenAI
+from agents import Agent, Runner, OpenAIChatCompletionsModel, function_tool
 
 from src.config.settings import settings
 from src.rag.retrieval import retrieve as retrieval_retrieve
@@ -13,38 +14,28 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Initialize Gemini client as AsyncOpenAI provider
-gemini_client = AsyncOpenAI(
+gemini_provider = AsyncOpenAI(
     api_key=settings.GEMINI_API_KEY,
     base_url=settings.GEMINI_BASE_URL
 )
+print("gemini key",settings.GEMINI_API_KEY)
+# Wrap provider in OpenAIChatCompletionsModel
+gemini_model = OpenAIChatCompletionsModel(
+    model=settings.GEMINI_MODEL,
+    openai_client=gemini_provider
+)
 
 # Agent instructions
-AGENT_INSTRUCTIONS = """You are an AI tutor for the Physical AI & Humanoid Robotics textbook.
+AGENT_INSTRUCTIONS = """
+You are an AI tutor for the Physical AI & Humanoid Robotics textbook.
 To answer the user question, first call the tool `retrieve` with the user query.
 Use ONLY the returned content from `retrieve` to answer.
-If the answer is not in the retrieved content, say "I don't know"."""
-
-# Tool definition for OpenAI function calling
-RETRIEVE_TOOL = {
-    "type": "function",
-    "function": {
-        "name": "retrieve",
-        "description": "Retrieve relevant book content for the query",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "query": {
-                    "type": "string",
-                    "description": "User question or search query"
-                }
-            },
-            "required": ["query"]
-        }
-    }
-}
+If the answer is not in the retrieved content, say "I don't know".
+"""
 
 
-def retrieve_tool(query: str) -> str:
+@function_tool
+def retrieve(query: str) -> str:
     """
     Retrieve relevant book content for the query.
 
@@ -61,6 +52,15 @@ def retrieve_tool(query: str) -> str:
     except Exception as e:
         logger.error(f"Error in retrieve tool: {e}")
         return f"Error retrieving content: {str(e)}"
+
+
+# Create agent with Gemini model and retrieve tool
+agent = Agent(
+    name="Physical AI Tutor",
+    instructions=AGENT_INSTRUCTIONS,
+    model=gemini_model,
+    tools=[retrieve]
+)
 
 
 async def query_agent(user_query: str, selection_text: str = None) -> str:
@@ -81,8 +81,8 @@ async def query_agent(user_query: str, selection_text: str = None) -> str:
         context = user_query
 
     try:
-        # Run agent with function calling
-        result = await _run_agent_with_tools(context)
+        # Run agent asynchronously
+        result = await _run_agent_async(context)
         logger.info(f"Generated answer for query: {user_query[:50]}...")
         return result
 
@@ -91,67 +91,15 @@ async def query_agent(user_query: str, selection_text: str = None) -> str:
         return f"I encountered an error processing your question: {str(e)}"
 
 
-async def _run_agent_with_tools(user_input: str, max_iterations: int = 5) -> str:
+async def _run_agent_async(user_input: str) -> str:
     """
-    Run agent with OpenAI function calling loop.
+    Run agent asynchronously using Runner.
 
     Args:
         user_input: User query with optional selection context
-        max_iterations: Maximum number of function call iterations
 
     Returns:
         Agent's final output
     """
-    messages = [
-        {"role": "system", "content": AGENT_INSTRUCTIONS},
-        {"role": "user", "content": user_input}
-    ]
-
-    for iteration in range(max_iterations):
-        # Call Gemini via OpenAI-compatible API
-        response = await gemini_client.chat.completions.create(
-            model=settings.GEMINI_MODEL,
-            messages=messages,
-            tools=[RETRIEVE_TOOL],
-            tool_choice="auto"
-        )
-
-        message = response.choices[0].message
-        messages.append(message.model_dump(exclude_unset=True))
-
-        # Check if agent wants to call a function
-        if message.tool_calls:
-            for tool_call in message.tool_calls:
-                function_name = tool_call.function.name
-                function_args = json.loads(tool_call.function.arguments)
-
-                logger.info(f"Agent calling tool: {function_name} with args: {function_args}")
-
-                # Execute the retrieve tool
-                if function_name == "retrieve":
-                    tool_result = retrieve_tool(function_args["query"])
-                else:
-                    tool_result = f"Unknown tool: {function_name}"
-
-                # Add tool response to messages
-                messages.append({
-                    "role": "tool",
-                    "tool_call_id": tool_call.id,
-                    "content": tool_result
-                })
-        else:
-            # No more tool calls - return final response
-            return message.content or "I don't have an answer."
-
-    # Max iterations reached
-    logger.warning(f"Agent reached max iterations ({max_iterations})")
-    return "I apologize, but I couldn't complete the task within the allowed steps."
-
-
-# Create a dummy agent object for backwards compatibility (if needed elsewhere)
-class Agent:
-    """Dummy agent class for compatibility."""
-    name = "Physical AI Tutor"
-    instructions = AGENT_INSTRUCTIONS
-
-agent = Agent()
+    result = await Runner.run(agent, user_input)
+    return result.final_output
