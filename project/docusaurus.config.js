@@ -20,7 +20,7 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://semiceto.github.io.hackathon_book/',
+  url: 'https://samiceto.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/hackathon_book/',
@@ -97,7 +97,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/semiceto/hackathon_book',
+            href: 'https://github.com/samiceto/hackathon_book',
             label: 'GitHub',
             position: 'right',
           },
@@ -141,7 +141,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/semiceto/hackathon_book',
+                href: 'https://github.com/samiceto/hackathon_book',
               },
             ],
           },
