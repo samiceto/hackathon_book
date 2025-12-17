@@ -103,5 +103,3 @@ async def _run_agent_async(user_input: str) -> str:
     """
     result = await Runner.run(agent, user_input)
     return result.final_output
-    
-
