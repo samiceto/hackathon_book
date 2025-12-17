@@ -8,7 +8,7 @@ qdrant-client==1.7.3
 
 # Embeddings & LLM
 cohere==4.47
-openai==1.12.0
+openai>=2.9.0,<3.0.0
 google-generativeai==0.3.2
 
 # OpenAI Agents SDK
