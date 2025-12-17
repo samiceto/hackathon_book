@@ -28,3 +28,82 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* ChatKit component styles */
+.chatkit-container {
+  width: 100%;
+  max-width: 400px;
+  height: 600px;
+  border: 2px solid #e5e7eb; /* Solid light border */
+  border-radius: 12px; /* More rounded corners */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f9fafb; /* Light background color */
+}
+
+.chatkit-error {
+  width: 100%;
+  max-width: 400px;
+  height: 600px;
+  border: 2px solid #e5e7eb; /* Solid light border */
+  border-radius: 12px; /* More rounded corners */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f9fafb; /* Light background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.chatkit-container-wrapper {
+  position: fixed;
+  bottom: 100px; /* Position above the toggle button */
+  right: 20px;
+  z-index: 1000;
+  width: 400px;
+}
+
+.chatbot-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+/* Collapsible chatbot styles */
+.chatbot-toggle-button {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  background-color: #3b82f6 !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  z-index: 1001 !important;
+  transition: all 0.3s ease !important;
+}
+
+.chatbot-toggle-button:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.chatbot-window {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  z-index: 1000;
+  width: 400px;
+  transition: all 0.3s ease;
+}
