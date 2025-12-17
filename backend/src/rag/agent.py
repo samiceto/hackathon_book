@@ -53,13 +53,27 @@ def retrieve(query: str) -> str:
         return f"Error retrieving content: {str(e)}"
 
 
-# Create agent with Gemini model and retrieve tool
-agent = Agent(
-    name="Physical AI Tutor",
-    instructions=AGENT_INSTRUCTIONS,
-    model=gemini_model,
-    tools=[retrieve]
-)
+# Lazy agent initialization to prevent startup quota drain
+_agent = None
+
+
+def get_agent() -> Agent:
+    """
+    Get or create the agent instance (lazy initialization).
+
+    Returns:
+        Agent: The Physical AI Tutor agent
+    """
+    global _agent
+    if _agent is None:
+        _agent = Agent(
+            name="Physical AI Tutor",
+            instructions=AGENT_INSTRUCTIONS,
+            model=gemini_model,
+            tools=[retrieve]
+        )
+        logger.info("Agent initialized on first use")
+    return _agent
 
 
 async def query_agent(user_query: str, selection_text: str = None) -> str:
@@ -92,7 +106,7 @@ async def query_agent(user_query: str, selection_text: str = None) -> str:
 
 async def _run_agent_async(user_input: str) -> str:
     """
-    Run agent asynchronously using Runner.
+    Run agent asynchronously using Runner with max_turns limit.
 
     Args:
         user_input: User query with optional selection context
@@ -100,5 +114,10 @@ async def _run_agent_async(user_input: str) -> str:
     Returns:
         Agent's final output
     """
-    result = await Runner.run(agent, user_input)
+    agent = get_agent()
+    result = await Runner.run(
+        agent,
+        user_input,
+        max_turns=2  # Limit turns to prevent Gemini quota drain
+    )
     return result.final_output

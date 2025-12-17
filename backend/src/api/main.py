@@ -3,7 +3,6 @@ FastAPI Backend: Main application with /api/chat, /chatkit, and /health endpoint
 """
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse, Response
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -17,14 +16,9 @@ from src.rag.agent import query_agent
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# ChatKit is optional - only import if available
-try:
-    from src.api.chatkit_server import RagChatKitServer
-    from chatkit.server import StreamingResult
-    CHATKIT_AVAILABLE = True
-except ImportError:
-    CHATKIT_AVAILABLE = False
-    logger.warning("ChatKit not available - /chatkit endpoint will be disabled")
+# ChatKit disabled to prevent Gemini quota issues
+CHATKIT_AVAILABLE = False
+logger.info("ChatKit disabled - only /api/chat endpoint available")
 
 # Initialize rate limiter
 limiter = Limiter(key_func=get_remote_address)
@@ -49,13 +43,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize ChatKit server (only if available)
-if CHATKIT_AVAILABLE:
-    chatkit_server = RagChatKitServer()
-    logger.info("ChatKit server initialized - /chatkit endpoint enabled")
-else:
-    chatkit_server = None
-    logger.info("ChatKit not available - only /api/chat endpoint will be available")
+# ChatKit disabled - no initialization needed
+chatkit_server = None
 
 
 # Pydantic models
@@ -107,43 +96,7 @@ async def chat(request: Request, body: ChatRequest):
         return ChatResponse(answer=f"I encountered an error: {str(e)}")
 
 
-# ChatKit endpoint (only if ChatKit is available)
-if CHATKIT_AVAILABLE:
-    @app.post("/chatkit")
-    @limiter.limit(settings.RATE_LIMIT)
-    async def chatkit_endpoint(request: Request):
-        """
-        ChatKit protocol endpoint for frontend integration.
-        Processes ChatKit requests and returns streaming or JSON responses.
-
-        Args:
-            request: FastAPI request object (contains ChatKit protocol payload)
-
-        Returns:
-            StreamingResponse (SSE) or Response (JSON)
-        """
-        logger.info("Processing ChatKit request")
-
-        try:
-            # Process ChatKit request
-            payload = await request.body()
-            result = await chatkit_server.process(payload, {"request": request})
-
-            # Return streaming response for SSE or JSON response
-            if isinstance(result, StreamingResult):
-                logger.info("Returning streaming response (SSE)")
-                return StreamingResponse(result, media_type="text/event-stream")
-            else:
-                logger.info("Returning JSON response")
-                return Response(content=result.json, media_type="application/json")
-
-        except Exception as e:
-            logger.error(f"Error in /chatkit endpoint: {e}")
-            return Response(
-                content=f'{{"error": "Internal server error: {str(e)}"}}',
-                media_type="application/json",
-                status_code=500
-            )
+# ChatKit endpoint removed to prevent Gemini quota issues
 
 
 @app.on_event("startup")
