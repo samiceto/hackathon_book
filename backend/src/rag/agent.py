@@ -1,7 +1,6 @@
 """
 OpenAI Agent with Gemini LLM: Agent setup with retrieval tool for RAG question answering.
 """
-import asyncio
 import logging
 from openai import AsyncOpenAI
 from agents import Agent, Runner, OpenAIChatCompletionsModel, function_tool
