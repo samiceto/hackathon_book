@@ -110,29 +110,58 @@ export default function ChatBot() {
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle chat"
       >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12 2C6.48 2 2 6.48 2 12C2 13.54 2.38 14.99 3.06 16.27L2 22L7.73 20.94C9.01 21.62 10.46 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C10.74 20 9.55 19.72 8.5 19.22L3.5 20.5L4.78 15.5C4.28 14.45 4 13.26 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
-            fill="currentColor"
-          />
-        </svg>
+        {isOpen ? (
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+              fill="currentColor"
+            />
+          </svg>
+        ) : (
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20 2H4C2.9 2 2.01 2.9 2.01 4L2 22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4.58 16.59L4 17.17V4H20V16ZM7 9H9V11H7V9ZM11 9H13V11H11V9ZM15 9H17V11H15V9Z"
+              fill="currentColor"
+            />
+          </svg>
+        )}
       </button>
 
       {/* Chat window */}
       {isOpen && (
         <div className="chatbot-container">
           <div className="chatbot-header">
-            <div>
-              <span>AI Assistant</span>
+            <div style={{ zIndex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM8.5 11C9.33 11 10 10.33 10 9.5C10 8.67 9.33 8 8.5 8C7.67 8 7 8.67 7 9.5C7 10.33 7.67 11 8.5 11ZM15.5 11C16.33 11 17 10.33 17 9.5C17 8.67 16.33 8 15.5 8C14.67 8 14 8.67 14 9.5C14 10.33 14.67 11 15.5 11ZM12 17.5C14.33 17.5 16.31 16.04 17.11 14H6.89C7.69 16.04 9.67 17.5 12 17.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span>Physical AI Assistant</span>
+              </div>
               {selectedText && (
-                <div style={{ fontSize: '0.75rem', opacity: 0.8, marginTop: '2px' }}>
-                  📌 Text selected: "{selectedText.substring(0, 30)}{selectedText.length > 30 ? '...' : ''}"
+                <div style={{ fontSize: '0.7rem', opacity: 0.9, marginTop: '4px', fontWeight: 400 }}>
+                  📌 "{selectedText.substring(0, 25)}{selectedText.length > 25 ? '...' : ''}"
                 </div>
               )}
             </div>
@@ -187,8 +216,8 @@ export default function ChatBot() {
                 aria-label="Send message"
               >
                 <svg
-                  width="20"
-                  height="20"
+                  width="16"
+                  height="16"
                   viewBox="0 0 20 20"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
