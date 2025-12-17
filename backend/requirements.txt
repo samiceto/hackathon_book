@@ -13,7 +13,7 @@ google-generativeai==0.3.2
 
 # OpenAI Agents SDK
 agents>=0.2.0
-chatkit
+chatkit>=0.1.0
 
 # Web Scraping
 beautifulsoup4==4.12.3
