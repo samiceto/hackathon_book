@@ -4,6 +4,7 @@ Query Embedding & Retrieval: Embed queries and retrieve relevant chunks from Qdr
 from typing import List
 import cohere
 from qdrant_client import QdrantClient
+from qdrant_client.models import ScoredPoint
 import logging
 
 from src.config.settings import settings
@@ -51,6 +52,7 @@ def get_embedding(query: str) -> List[float]:
         return [0.0] * settings.QDRANT_VECTOR_SIZE
 
 
+
 def retrieve(query: str) -> str:
     """
     Retrieve relevant book content for the query.
@@ -65,14 +67,13 @@ def retrieve(query: str) -> str:
     qdrant_client = get_qdrant_client()
 
     try:
-        # Latest Qdrant client method
-        results = qdrant_client.query_points(
+        results: list[ScoredPoint] = qdrant_client.search(
             collection_name=settings.COLLECTION_NAME,
-            query=embedding,
+            query_vector=embedding,
             limit=settings.QDRANT_SEARCH_LIMIT
         )
 
-        chunks = [point.payload["text"] for point in results.points]
+        chunks = [point.payload["text"] for point in results]
         formatted_text = "\n\n---\n\n".join(chunks)
 
         logger.info(f"Retrieved {len(chunks)} chunks for query: {query[:50]}...")
