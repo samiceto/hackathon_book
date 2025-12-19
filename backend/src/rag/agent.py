@@ -3,7 +3,7 @@ OpenAI Agent with Gemini LLM: Agent setup with retrieval tool for RAG question a
 """
 import logging
 from openai import AsyncOpenAI
-from agents import Agent, Runner, OpenAIChatCompletionsModel, function_tool
+from agents import Agent, Runner, OpenAIChatCompletionsModel, function_tool,ModelSettings
 
 from src.config.settings import settings
 from src.rag.retrieval import retrieve as retrieval_retrieve
@@ -70,7 +70,8 @@ def get_agent() -> Agent:
             name="Physical AI Tutor",
             instructions=AGENT_INSTRUCTIONS,
             model=gemini_model,
-            tools=[retrieve]
+            tools=[retrieve],
+            model_settings=ModelSettings(tool_choice="required")
         )
         logger.info("Agent initialized on first use")
     return _agent
